@@ -1,0 +1,12 @@
+{
+  "name": "WDP_SPRING_2025",
+  "version": "1.0.0",
+  "main": "src/server.js",
+  "repository": "https://github.com/VuZuZi/WDP_SPRING_2025.git",
+  "author": "VuZuZi",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
