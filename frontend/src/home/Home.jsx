@@ -1,6 +1,16 @@
 import React from 'react';
 import { FaBars } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi";
+import './animate.css';
+import './bootsnav.css';
+import './flaticon.css';
+import './font-awesome.min.css';
+import './home.css';
+import './linearicons.css';
+import './responsive.css';
+import './slick-theme.css';
+import './slick.css';
+
 const DirectoryLandingPage = () => {
     return (
         <div>
@@ -654,6 +664,531 @@ const DirectoryLandingPage = () => {
       </div>
     </div>
     {/*/.container*/}
+    <section id="reviews" className="reviews">
+    <div className="section-header">
+      <h2>clients reviews</h2>
+      <p>What our client say about us</p>
+    </div>
+    {/*/.section-header*/}
+    <div className="reviews-content">
+      <div className="testimonial-carousel">
+        <div className="single-testimonial-box">
+          <div className="testimonial-description">
+            <div className="testimonial-info">
+              <div className="testimonial-img">
+                <img src="assets/images/clients/c1.png" alt="clients" />
+              </div>
+              {/*/.testimonial-img*/}
+              <div className="testimonial-person">
+                <h2>Tom Leakar</h2>
+                <h4>london, UK</h4>
+                <div className="testimonial-person-star">
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                </div>
+              </div>
+              {/*/.testimonial-person*/}
+            </div>
+            {/*/.testimonial-info*/}
+            <div className="testimonial-comment">
+              <p>
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                qui officia deserunt mollit anim id est laborum. Sed ut
+                perspiciatis eaque.
+              </p>
+            </div>
+            {/*/.testimonial-comment*/}
+          </div>
+          {/*/.testimonial-description*/}
+        </div>
+        {/*/.single-testimonial-box*/}
+        <div className="single-testimonial-box">
+          <div className="testimonial-description">
+            <div className="testimonial-info">
+              <div className="testimonial-img">
+                <img src="assets/images/clients/c2.png" alt="clients" />
+              </div>
+              {/*/.testimonial-img*/}
+              <div className="testimonial-person">
+                <h2>monirul islam</h2>
+                <h4>london, UK</h4>
+                <div className="testimonial-person-star">
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                </div>
+              </div>
+              {/*/.testimonial-person*/}
+            </div>
+            {/*/.testimonial-info*/}
+            <div className="testimonial-comment">
+              <p>
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                qui officia deserunt mollit anim id est laborum. Sed ut
+                perspiciatis eaque.
+              </p>
+            </div>
+            {/*/.testimonial-comment*/}
+          </div>
+          {/*/.testimonial-description*/}
+        </div>
+        {/*/.single-testimonial-box*/}
+        <div className="single-testimonial-box">
+          <div className="testimonial-description">
+            <div className="testimonial-info">
+              <div className="testimonial-img">
+                <img src="assets/images/clients/c3.png" alt="clients" />
+              </div>
+              {/*/.testimonial-img*/}
+              <div className="testimonial-person">
+                <h2>Shohrab Hossain</h2>
+                <h4>london, UK</h4>
+                <div className="testimonial-person-star">
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                </div>
+              </div>
+              {/*/.testimonial-person*/}
+            </div>
+            {/*/.testimonial-info*/}
+            <div className="testimonial-comment">
+              <p>
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                qui officia deserunt mollit anim id est laborum. Sed ut
+                perspiciatis eaque.
+              </p>
+            </div>
+            {/*/.testimonial-comment*/}
+          </div>
+          {/*/.testimonial-description*/}
+        </div>
+        {/*/.single-testimonial-box*/}
+        <div className="single-testimonial-box">
+          <div className="testimonial-description">
+            <div className="testimonial-info">
+              <div className="testimonial-img">
+                <img src="assets/images/clients/c4.png" alt="clients" />
+              </div>
+              {/*/.testimonial-img*/}
+              <div className="testimonial-person">
+                <h2>Tom Leakar</h2>
+                <h4>london, UK</h4>
+                <div className="testimonial-person-star">
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                </div>
+              </div>
+              {/*/.testimonial-person*/}
+            </div>
+            {/*/.testimonial-info*/}
+            <div className="testimonial-comment">
+              <p>
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                qui officia deserunt mollit anim id est laborum. Sed ut
+                perspiciatis eaque.
+              </p>
+            </div>
+            {/*/.testimonial-comment*/}
+          </div>
+          {/*/.testimonial-description*/}
+        </div>
+        {/*/.single-testimonial-box*/}
+        <div className="single-testimonial-box">
+          <div className="testimonial-description">
+            <div className="testimonial-info">
+              <div className="testimonial-img">
+                <img src="assets/images/clients/c1.png" alt="clients" />
+              </div>
+              {/*/.testimonial-img*/}
+              <div className="testimonial-person">
+                <h2>Tom Leakar</h2>
+                <h4>london, UK</h4>
+                <div className="testimonial-person-star">
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                </div>
+              </div>
+              {/*/.testimonial-person*/}
+            </div>
+            {/*/.testimonial-info*/}
+            <div className="testimonial-comment">
+              <p>
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                qui officia deserunt mollit anim id est laborum. Sed ut
+                perspiciatis eaque.
+              </p>
+            </div>
+            {/*/.testimonial-comment*/}
+          </div>
+          {/*/.testimonial-description*/}
+        </div>
+        {/*/.single-testimonial-box*/}
+        <div className="single-testimonial-box">
+          <div className="testimonial-description">
+            <div className="testimonial-info">
+              <div className="testimonial-img">
+                <img src="assets/images/clients/c2.png" alt="clients" />
+              </div>
+              {/*/.testimonial-img*/}
+              <div className="testimonial-person">
+                <h2>monirul islam</h2>
+                <h4>london, UK</h4>
+                <div className="testimonial-person-star">
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                </div>
+              </div>
+              {/*/.testimonial-person*/}
+            </div>
+            {/*/.testimonial-info*/}
+            <div className="testimonial-comment">
+              <p>
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                qui officia deserunt mollit anim id est laborum. Sed ut
+                perspiciatis eaque.
+              </p>
+            </div>
+            {/*/.testimonial-comment*/}
+          </div>
+          {/*/.testimonial-description*/}
+        </div>
+        {/*/.single-testimonial-box*/}
+        <div className="single-testimonial-box">
+          <div className="testimonial-description">
+            <div className="testimonial-info">
+              <div className="testimonial-img">
+                <img src="assets/images/clients/c3.png" alt="clients" />
+              </div>
+              {/*/.testimonial-img*/}
+              <div className="testimonial-person">
+                <h2>Shohrab Hossain</h2>
+                <h4>london, UK</h4>
+                <div className="testimonial-person-star">
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                </div>
+              </div>
+              {/*/.testimonial-person*/}
+            </div>
+            {/*/.testimonial-info*/}
+            <div className="testimonial-comment">
+              <p>
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                qui officia deserunt mollit anim id est laborum. Sed ut
+                perspiciatis eaque.
+              </p>
+            </div>
+            {/*/.testimonial-comment*/}
+          </div>
+          {/*/.testimonial-description*/}
+        </div>
+        {/*/.single-testimonial-box*/}
+        <div className="single-testimonial-box">
+          <div className="testimonial-description">
+            <div className="testimonial-info">
+              <div className="testimonial-img">
+                <img src="assets/images/clients/c4.png" alt="clients" />
+              </div>
+              {/*/.testimonial-img*/}
+              <div className="testimonial-person">
+                <h2>Tom Leakar</h2>
+                <h4>london, UK</h4>
+                <div className="testimonial-person-star">
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                  <i className="fa fa-star" />
+                </div>
+              </div>
+              {/*/.testimonial-person*/}
+            </div>
+            {/*/.testimonial-info*/}
+            <div className="testimonial-comment">
+              <p>
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                qui officia deserunt mollit anim id est laborum. Sed ut
+                perspiciatis eaque.
+              </p>
+            </div>
+            {/*/.testimonial-comment*/}
+          </div>
+          {/*/.testimonial-description*/}
+        </div>
+        {/*/.single-testimonial-box*/}
+      </div>
+    </div>
+  </section>
+  {/*/.reviews*/}
+  {/*reviews end */}
+  {/* statistics strat */}
+  <section id="statistics" className="statistics">
+    <div className="container">
+      <div className="statistics-counter">
+        <div className="col-md-3 col-sm-6">
+          <div className="single-ststistics-box">
+            <div className="statistics-content">
+              <div className="counter">90 </div> <span>K+</span>
+            </div>
+            {/*/.statistics-content*/}
+            <h3>listings</h3>
+          </div>
+          {/*/.single-ststistics-box*/}
+        </div>
+        {/*/.col*/}
+        <div className="col-md-3 col-sm-6">
+          <div className="single-ststistics-box">
+            <div className="statistics-content">
+              <div className="counter">40</div> <span>k+</span>
+            </div>
+            {/*/.statistics-content*/}
+            <h3>listing categories</h3>
+          </div>
+          {/*/.single-ststistics-box*/}
+        </div>
+        {/*/.col*/}
+        <div className="col-md-3 col-sm-6">
+          <div className="single-ststistics-box">
+            <div className="statistics-content">
+              <div className="counter">65</div> <span>k+</span>
+            </div>
+            {/*/.statistics-content*/}
+            <h3>visitors</h3>
+          </div>
+          {/*/.single-ststistics-box*/}
+        </div>
+        {/*/.col*/}
+        <div className="col-md-3 col-sm-6">
+          <div className="single-ststistics-box">
+            <div className="statistics-content">
+              <div className="counter">50</div> <span>k+</span>
+            </div>
+            {/*/.statistics-content*/}
+            <h3>happy clients</h3>
+          </div>
+          {/*/.single-ststistics-box*/}
+        </div>
+        {/*/.col*/}
+      </div>
+      {/*/.statistics-counter*/}
+    </div>
+    {/*/.container*/}
+  </section>
+  {/*/.counter*/}
+  {/* statistics end */}
+  {/*blog start */}
+  <section id="blog" className="blog">
+    <div className="container">
+      <div className="section-header">
+        <h2>news and articles</h2>
+        <p>Always upto date with our latest News and Articles </p>
+      </div>
+      {/*/.section-header*/}
+      <div className="blog-content">
+        <div className="row">
+          <div className="col-md-4 col-sm-6">
+            <div className="single-blog-item">
+              <div className="single-blog-item-img">
+                <img src="assets/images/blog/b1.jpg" alt="blog image" />
+              </div>
+              <div className="single-blog-item-txt">
+                <h2>
+                  <a href="#">How to find your Desired Place more quickly</a>
+                </h2>
+                <h4>
+                  posted <span>by</span> <a href="#">admin</a> march 2018
+                </h4>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur de adipisicing elit,
+                  sed do eiusmod tempore incididunt ut labore et dolore magna.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-4 col-sm-6">
+            <div className="single-blog-item">
+              <div className="single-blog-item-img">
+                <img src="assets/images/blog/b2.jpg" alt="blog image" />
+              </div>
+              <div className="single-blog-item-txt">
+                <h2>
+                  <a href="#">How to find your Desired Place more quickly</a>
+                </h2>
+                <h4>
+                  posted <span>by</span> <a href="#">admin</a> march 2018
+                </h4>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur de adipisicing elit,
+                  sed do eiusmod tempore incididunt ut labore et dolore magna.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-4 col-sm-6">
+            <div className="single-blog-item">
+              <div className="single-blog-item-img">
+                <img src="assets/images/blog/b3.jpg" alt="blog image" />
+              </div>
+              <div className="single-blog-item-txt">
+                <h2>
+                  <a href="#">How to find your Desired Place more quickly</a>
+                </h2>
+                <h4>
+                  posted <span>by</span> <a href="#">admin</a> march 2018
+                </h4>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur de adipisicing elit,
+                  sed do eiusmod tempore incididunt ut labore et dolore magna.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {/*/.container*/}
+  </section>
+  {/*/.blog*/}
+  {/*blog end */}
+  {/*subscription strat */}
+  <section id="contact" className="subscription">
+    <div className="container">
+      <div className="subscribe-title text-center">
+        <h2>do you want to add your business listing with us?</h2>
+        <p>
+          Listrace offer you to list your business with us and we very much able
+          to promote your Business.
+        </p>
+      </div>
+      <div className="row">
+        <div className="col-sm-12">
+          <div className="subscription-input-group">
+            <form action="#">
+              <input
+                type="email"
+                className="subscription-input-form"
+                placeholder="Enter your email here"
+              />
+              <button
+                className="appsLand-btn subscribe-btn"
+                onclick="window.location.href='#'"
+              >
+                creat account
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {/*/subscription*/}
+  {/*subscription end */}
+  {/*footer start*/}
+  <footer id="footer" className="footer">
+    <div className="container">
+      <div className="footer-menu">
+        <div className="row">
+          <div className="col-sm-3">
+            <div className="navbar-header">
+              <a className="navbar-brand" href="index.html">
+                list<span>race</span>
+              </a>
+            </div>
+            {/*/.navbar-header*/}
+          </div>
+          <div className="col-sm-9">
+            <ul className="footer-menu-item">
+              <li className="scroll">
+                <a href="#works">how it works</a>
+              </li>
+              <li className="scroll">
+                <a href="#explore">explore</a>
+              </li>
+              <li className="scroll">
+                <a href="#reviews">review</a>
+              </li>
+              <li className="scroll">
+                <a href="#blog">blog</a>
+              </li>
+              <li className="scroll">
+                <a href="#contact">contact</a>
+              </li>
+              <li className=" scroll">
+                <a href="#contact">my account</a>
+              </li>
+            </ul>
+            {/*/.nav */}
+          </div>
+        </div>
+      </div>
+      <div className="hm-footer-copyright">
+        <div className="row">
+          <div className="col-sm-5">
+            <p>
+              ©copyright. designed and developed by{" "}
+              <a href="https://www.themesine.com/">themesine</a>
+            </p>
+            {/*/p*/}
+          </div>
+          <div className="col-sm-7">
+            <div className="footer-social">
+              <span>
+                <i className="fa fa-phone"> +1 (222) 777 8888</i>
+              </span>
+              <a href="#">
+                <i className="fa fa-facebook" />
+              </a>
+              <a href="#">
+                <i className="fa fa-twitter" />
+              </a>
+              <a href="#">
+                <i className="fa fa-linkedin" />
+              </a>
+              <a href="#">
+                <i className="fa fa-google-plus" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/*/.hm-footer-copyright*/}
+    </div>
+    {/*/.container*/}
+    <div id="scroll-Top">
+      <div className="return-to-top">
+        <i
+          className="fa fa-angle-up "
+          id="scroll-top"
+          data-toggle="tooltip"
+          data-placement="top"
+          title=""
+          data-original-title="Back to Top"
+          aria-hidden="true"
+        />
+      </div>
+    </div>
+    {/*/.scroll-Top*/}
+  </footer>
   </section>
     </section>
         </div>
