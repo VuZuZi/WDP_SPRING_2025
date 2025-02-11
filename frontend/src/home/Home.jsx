@@ -1,8 +1,18 @@
 import React from 'react';
-import { FaBars } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi";
+import b1 from "../../public/images/blog/b1.jpg";
+import b2 from "../../public/images/blog/b2.jpg";
+import b3 from "../../public/images/blog/b3.jpg";
+import e1 from "../../public/images/explore/e1.jpg";
+import e2 from "../../public/images/explore/e2.jpg";
+import e3 from "../../public/images/explore/e3.jpg";
+import e4 from "../../public/images/explore/e4.jpg";
+import e5 from "../../public/images/explore/e5.jpg";
+import e6 from "../../public/images/explore/e6.jpg";
+import person from "../../public/images/explore/person.png";
 import './animate.css';
 import './bootsnav.css';
+import './bootstrap.min.css';
 import './flaticon.css';
 import './font-awesome.min.css';
 import './home.css';
@@ -10,8 +20,7 @@ import './linearicons.css';
 import './responsive.css';
 import './slick-theme.css';
 import './slick.css';
-
-
+import logowelcome from "./welcome-hero/banner.jpg";
 const DirectoryLandingPage = () => {
     return (
       
@@ -26,8 +35,9 @@ const DirectoryLandingPage = () => {
                   <option value="default">EN</option>
                   <option value="Bangla">BN</option>
                   <option value="Arabic">AB</option>
-                </select>
+                </select> 
               </li>
+                
               <div className="mt-4">
               <div className="mt-4">
       </div>
@@ -36,7 +46,7 @@ const DirectoryLandingPage = () => {
                 <select name="currency" id="currency">
                   <option value="usd">USD</option>
                   <option value="euro">Euro</option>
-                  <option value="bdt">BDT</option>
+                  <option  ption value="bdt">BDT</option>
                 </select>
               </li>
               <li className="select-opt">
@@ -48,7 +58,7 @@ const DirectoryLandingPage = () => {
         <li className="head-responsive-right pull-right">
           <div className="header-top-right">
             <ul>
-              <li className="header-top-contact">+1 222 777 6565</li>
+              <li className="header-top-contact">+84 0908 290 345</li>
               <li className="header-top-contact"><a href="/login">sign in</a></li>
               <li className="header-top-contact"><a href="/register">register</a></li>
             </ul>
@@ -56,36 +66,38 @@ const DirectoryLandingPage = () => {
         </li>
       </ul>
     </header>
-            <section className="top-area">
-      <div className="header-area">
-        <nav className="navbar navbar-default bootsnav navbar-sticky navbar-scrollspy">
-          <div className="container mx-auto px-4 flex justify-between items-center py-4">
-            <div className="navbar-header flex items-center">
-              <button className="navbar-toggle text-xl">
-                <FaBars />
-              </button>
-              <a className="navbar-brand text-2xl font-bold ml-4" href="index.html">
-                list<span className="text-red-500">race</span>
-              </a>
-            </div>
-            <div className="hidden md:flex space-x-6">
-              <a href="#home" className="hover:text-red-500">Home</a>
-              <a href="#works" className="hover:text-red-500">How it works</a>
-              <a href="#explore" className="hover:text-red-500">Explore</a>
-              <a href="#reviews" className="hover:text-red-500">Review</a>
-              <a href="#blog" className="hover:text-red-500">Blog</a>
-              <a href="#contact" className="hover:text-red-500">Contact</a>
-            </div>
-          </div>
-        </nav>
+    <nav className="navbar">
+      <div className="logo">
+        <span className="text-black">List</span><span className="text-red">ROOM RENT</span>
       </div>
-    </section>
+      <div className="nav-links">
+        <a href="#">HOME</a>
+        <a href="#">HOW IT WORKS</a>
+        <a href="#">EXPLORE</a>
+        <a href="#">REVIEW</a>
+        <a href="#">BLOG</a>
+        <a href="#">CONTACT</a>
+      </div>
+    </nav>
+
     <section id="home" className="welcome-hero py-16 bg-gray-100">
-      <div className="container mx-auto text-center">
-        <h2 className="text-4xl font-bold">Best place to find and explore <br /> that all you need</h2>
-        <p className="text-gray-600 mt-4">
-          Find Best Place, Restaurant, Hotel, Real Estate and many more in just one click
-        </p>
+    <div className="absolute inset-0">
+    <img
+          src={logowelcome}
+          alt="City skyline at dusk with buildings and water"
+          className="w-full h-screen object-cover"
+          width="1920"
+          height="1080"
+        />
+      </div>
+      <div className="overlay"></div>
+        <div className="text-container">
+          <h1>
+          BEST PLACE TO FIND AND EXPLORE RENTAL ROOMS THAT SUIT ALL YOUR NEEDS.
+          </h1>
+          <p>
+          Find for rooms, apartments, rentals and more with just one click.
+          </p>
         <div className="welcome-hero-serch-box mt-8 flex justify-center space-x-4">
           <div className="single-welcome-hero-form bg-white p-4 shadow-md rounded-lg flex items-center">
             <input type="text" placeholder="Ex: place, restaurant, food, automobile" className="border-none focus:outline-none" />
@@ -93,6 +105,7 @@ const DirectoryLandingPage = () => {
           <div className="single-welcome-hero-form bg-white p-4 shadow-md rounded-lg flex items-center">
             <input type="text" placeholder="Ex: London, New York, Rome" className="border-none focus:outline-none" />
           </div>
+          
           <button className="welcome-hero-btn bg-red-500 text-white px-6 py-3 rounded-lg flex items-center">
             Search <FiSearch className="ml-2" />
           </button>
@@ -139,7 +152,7 @@ const DirectoryLandingPage = () => {
                   </div>
                   <h2><a href="#">{item.title}</a></h2>
                   <p>
-                    Lorem ipsum dolor sit amet, consecte adipisicing elit, sed do eiusmod tempor incididunt ut labore magna aliqua.
+                  Find the perfect room to rent, with spacious options and affordable prices. Our listings provide you with a variety of choices to meet your needs, ensuring comfort and convenience.
                   </p>
                   <button 
                     className="welcome-hero-btn how-work-btn" 
@@ -165,7 +178,7 @@ const DirectoryLandingPage = () => {
           <div className=" col-md-4 col-sm-6">
             <div className="single-explore-item">
               <div className="single-explore-img">
-                <img src="assets/images/explore/e1.jpg" alt="explore image" />
+                <img src={e1} alt="explore image" />
                 <div className="single-explore-img-info">
                   <button onclick="window.location.href='#'">best rated</button>
                   <div className="single-explore-image-icon-box">
@@ -203,7 +216,7 @@ const DirectoryLandingPage = () => {
                       <div className="explore-person-img">
                         <a href="#">
                           <img
-                            src="assets/images/explore/person.png"
+                            src={person}
                             alt="explore person"
                           />
                         </a>
@@ -211,9 +224,7 @@ const DirectoryLandingPage = () => {
                     </div>
                     <div className="col-sm-10">
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit, sed do eiusmod tempor incid ut labore et dolore
-                        magna aliqua....
+                      Find the perfect room to rent, with spacious options and affordable prices. Our listings provide you with a variety of choices to meet your needs, ensuring comfort and convenience....
                       </p>
                     </div>
                   </div>
@@ -249,7 +260,7 @@ const DirectoryLandingPage = () => {
           <div className="col-md-4 col-sm-6">
             <div className="single-explore-item">
               <div className="single-explore-img">
-                <img src="assets/images/explore/e2.jpg" alt="explore image" />
+                <img src={e2} alt="explore image" />
                 <div className="single-explore-img-info">
                   <button onclick="window.location.href='#'">featured</button>
                   <div className="single-explore-image-icon-box">
@@ -287,7 +298,7 @@ const DirectoryLandingPage = () => {
                       <div className="explore-person-img">
                         <a href="#">
                           <img
-                            src="assets/images/explore/person.png"
+                            src={person}
                             alt="explore person"
                           />
                         </a>
@@ -295,9 +306,7 @@ const DirectoryLandingPage = () => {
                     </div>
                     <div className="col-sm-10">
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit, sed do eiusmod tempor incid ut labore et dolore
-                        magna aliqua....
+                      Find the perfect room to rent, with spacious options and affordable prices. Our listings provide you with a variety of choices to meet your needs, ensuring comfort and convenience...
                       </p>
                     </div>
                   </div>
@@ -333,7 +342,7 @@ const DirectoryLandingPage = () => {
           <div className="col-md-4 col-sm-6">
             <div className="single-explore-item">
               <div className="single-explore-img">
-                <img src="assets/images/explore/e3.jpg" alt="explore image" />
+                <img src={e3} alt="explore image" />
                 <div className="single-explore-img-info">
                   <button onclick="window.location.href='#'">best rated</button>
                   <div className="single-explore-image-icon-box">
@@ -371,7 +380,7 @@ const DirectoryLandingPage = () => {
                       <div className="explore-person-img">
                         <a href="#">
                           <img
-                            src="assets/images/explore/person.png"
+                            src={person}
                             alt="explore person"
                           />
                         </a>
@@ -379,9 +388,7 @@ const DirectoryLandingPage = () => {
                     </div>
                     <div className="col-sm-10">
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit, sed do eiusmod tempor incid ut labore et dolore
-                        magna aliqua....
+                      Find the perfect room to rent, with spacious options and affordable prices. Our listings provide you with a variety of choices to meet your needs, ensuring comfort and convenience.....
                       </p>
                     </div>
                   </div>
@@ -417,7 +424,7 @@ const DirectoryLandingPage = () => {
           <div className=" col-md-4 col-sm-6">
             <div className="single-explore-item">
               <div className="single-explore-img">
-                <img src="assets/images/explore/e4.jpg" alt="explore image" />
+                <img src={e4} alt="explore image" />
                 <div className="single-explore-img-info">
                   <button onclick="window.location.href='#'">most view</button>
                   <div className="single-explore-image-icon-box">
@@ -455,7 +462,7 @@ const DirectoryLandingPage = () => {
                       <div className="explore-person-img">
                         <a href="#">
                           <img
-                            src="assets/images/explore/person.png"
+                            src={person}
                             alt="explore person"
                           />
                         </a>
@@ -463,9 +470,7 @@ const DirectoryLandingPage = () => {
                     </div>
                     <div className="col-sm-10">
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit, sed do eiusmod tempor incid ut labore et dolore
-                        magna aliqua....
+                      Find the perfect room to rent, with spacious options and affordable prices. Our listings provide you with a variety of choices to meet your needs, ensuring comfort and convenience.....
                       </p>
                     </div>
                   </div>
@@ -501,7 +506,7 @@ const DirectoryLandingPage = () => {
           <div className="col-md-4 col-sm-6">
             <div className="single-explore-item">
               <div className="single-explore-img">
-                <img src="assets/images/explore/e5.jpg" alt="explore image" />
+                <img src={e5} alt="explore image" />
                 <div className="single-explore-img-info">
                   <button onclick="window.location.href='#'">featured</button>
                   <div className="single-explore-image-icon-box">
@@ -539,7 +544,7 @@ const DirectoryLandingPage = () => {
                       <div className="explore-person-img">
                         <a href="#">
                           <img
-                            src="assets/images/explore/person.png"
+                            src={person}
                             alt="explore person"
                           />
                         </a>
@@ -547,9 +552,7 @@ const DirectoryLandingPage = () => {
                     </div>
                     <div className="col-sm-10">
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit, sed do eiusmod tempor incid ut labore et dolore
-                        magna aliqua....
+                      Find the perfect room to rent, with spacious options and affordable prices. Our listings provide you with a variety of choices to meet your needs, ensuring comfort and convenience.....
                       </p>
                     </div>
                   </div>
@@ -585,7 +588,7 @@ const DirectoryLandingPage = () => {
           <div className="col-md-4 col-sm-6">
             <div className="single-explore-item">
               <div className="single-explore-img">
-                <img src="assets/images/explore/e6.jpg" alt="explore image" />
+                <img src={e6} alt="explore image" />
                 <div className="single-explore-img-info">
                   <button onclick="window.location.href='#'">best rated</button>
                   <div className="single-explore-image-icon-box">
@@ -623,7 +626,7 @@ const DirectoryLandingPage = () => {
                       <div className="explore-person-img">
                         <a href="#">
                           <img
-                            src="assets/images/explore/person.png"
+                            src={person}
                             alt="explore person"
                           />
                         </a>
@@ -631,9 +634,7 @@ const DirectoryLandingPage = () => {
                     </div>
                     <div className="col-sm-10">
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit, sed do eiusmod tempor incid ut labore et dolore
-                        magna aliqua....
+                      Find the perfect room to rent, with spacious options and affordable prices. Our listings provide you with a variety of choices to meet your needs, ensuring comfort and convenience.....
                       </p>
                     </div>
                   </div>
@@ -670,284 +671,7 @@ const DirectoryLandingPage = () => {
       </div>
     </div>
     {/*/.container*/}
-    <section id="reviews" className="reviews">
-    <div className="section-header">
-      <h2>clients reviews</h2>
-      <p>What our client say about us</p>
-    </div>
-    {/*/.section-header*/}
-    <div className="reviews-content">
-      <div className="testimonial-carousel">
-        <div className="single-testimonial-box">
-          <div className="testimonial-description">
-            <div className="testimonial-info">
-              <div className="testimonial-img">
-                <img src="assets/images/clients/c1.png" alt="clients" />
-              </div>
-              {/*/.testimonial-img*/}
-              <div className="testimonial-person">
-                <h2>Tom Leakar</h2>
-                <h4>london, UK</h4>
-                <div className="testimonial-person-star">
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                </div>
-              </div>
-              {/*/.testimonial-person*/}
-            </div>
-            {/*/.testimonial-info*/}
-            <div className="testimonial-comment">
-              <p>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                qui officia deserunt mollit anim id est laborum. Sed ut
-                perspiciatis eaque.
-              </p>
-            </div>
-            {/*/.testimonial-comment*/}
-          </div>
-          {/*/.testimonial-description*/}
-        </div>
-        {/*/.single-testimonial-box*/}
-        <div className="single-testimonial-box">
-          <div className="testimonial-description">
-            <div className="testimonial-info">
-              <div className="testimonial-img">
-                <img src="assets/images/clients/c2.png" alt="clients" />
-              </div>
-              {/*/.testimonial-img*/}
-              <div className="testimonial-person">
-                <h2>monirul islam</h2>
-                <h4>london, UK</h4>
-                <div className="testimonial-person-star">
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                </div>
-              </div>
-              {/*/.testimonial-person*/}
-            </div>
-            {/*/.testimonial-info*/}
-            <div className="testimonial-comment">
-              <p>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                qui officia deserunt mollit anim id est laborum. Sed ut
-                perspiciatis eaque.
-              </p>
-            </div>
-            {/*/.testimonial-comment*/}
-          </div>
-          {/*/.testimonial-description*/}
-        </div>
-        {/*/.single-testimonial-box*/}
-        <div className="single-testimonial-box">
-          <div className="testimonial-description">
-            <div className="testimonial-info">
-              <div className="testimonial-img">
-                <img src="assets/images/clients/c3.png" alt="clients" />
-              </div>
-              {/*/.testimonial-img*/}
-              <div className="testimonial-person">
-                <h2>Shohrab Hossain</h2>
-                <h4>london, UK</h4>
-                <div className="testimonial-person-star">
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                </div>
-              </div>
-              {/*/.testimonial-person*/}
-            </div>
-            {/*/.testimonial-info*/}
-            <div className="testimonial-comment">
-              <p>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                qui officia deserunt mollit anim id est laborum. Sed ut
-                perspiciatis eaque.
-              </p>
-            </div>
-            {/*/.testimonial-comment*/}
-          </div>
-          {/*/.testimonial-description*/}
-        </div>
-        {/*/.single-testimonial-box*/}
-        <div className="single-testimonial-box">
-          <div className="testimonial-description">
-            <div className="testimonial-info">
-              <div className="testimonial-img">
-                <img src="assets/images/clients/c4.png" alt="clients" />
-              </div>
-              {/*/.testimonial-img*/}
-              <div className="testimonial-person">
-                <h2>Tom Leakar</h2>
-                <h4>london, UK</h4>
-                <div className="testimonial-person-star">
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                </div>
-              </div>
-              {/*/.testimonial-person*/}
-            </div>
-            {/*/.testimonial-info*/}
-            <div className="testimonial-comment">
-              <p>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                qui officia deserunt mollit anim id est laborum. Sed ut
-                perspiciatis eaque.
-              </p>
-            </div>
-            {/*/.testimonial-comment*/}
-          </div>
-          {/*/.testimonial-description*/}
-        </div>
-        {/*/.single-testimonial-box*/}
-        <div className="single-testimonial-box">
-          <div className="testimonial-description">
-            <div className="testimonial-info">
-              <div className="testimonial-img">
-                <img src="assets/images/clients/c1.png" alt="clients" />
-              </div>
-              {/*/.testimonial-img*/}
-              <div className="testimonial-person">
-                <h2>Tom Leakar</h2>
-                <h4>london, UK</h4>
-                <div className="testimonial-person-star">
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                </div>
-              </div>
-              {/*/.testimonial-person*/}
-            </div>
-            {/*/.testimonial-info*/}
-            <div className="testimonial-comment">
-              <p>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                qui officia deserunt mollit anim id est laborum. Sed ut
-                perspiciatis eaque.
-              </p>
-            </div>
-            {/*/.testimonial-comment*/}
-          </div>
-          {/*/.testimonial-description*/}
-        </div>
-        {/*/.single-testimonial-box*/}
-        <div className="single-testimonial-box">
-          <div className="testimonial-description">
-            <div className="testimonial-info">
-              <div className="testimonial-img">
-                <img src="assets/images/clients/c2.png" alt="clients" />
-              </div>
-              {/*/.testimonial-img*/}
-              <div className="testimonial-person">
-                <h2>monirul islam</h2>
-                <h4>london, UK</h4>
-                <div className="testimonial-person-star">
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                </div>
-              </div>
-              {/*/.testimonial-person*/}
-            </div>
-            {/*/.testimonial-info*/}
-            <div className="testimonial-comment">
-              <p>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                qui officia deserunt mollit anim id est laborum. Sed ut
-                perspiciatis eaque.
-              </p>
-            </div>
-            {/*/.testimonial-comment*/}
-          </div>
-          {/*/.testimonial-description*/}
-        </div>
-        {/*/.single-testimonial-box*/}
-        <div className="single-testimonial-box">
-          <div className="testimonial-description">
-            <div className="testimonial-info">
-              <div className="testimonial-img">
-                <img src="assets/images/clients/c3.png" alt="clients" />
-              </div>
-              {/*/.testimonial-img*/}
-              <div className="testimonial-person">
-                <h2>Shohrab Hossain</h2>
-                <h4>london, UK</h4>
-                <div className="testimonial-person-star">
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                </div>
-              </div>
-              {/*/.testimonial-person*/}
-            </div>
-            {/*/.testimonial-info*/}
-            <div className="testimonial-comment">
-              <p>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                qui officia deserunt mollit anim id est laborum. Sed ut
-                perspiciatis eaque.
-              </p>
-            </div>
-            {/*/.testimonial-comment*/}
-          </div>
-          {/*/.testimonial-description*/}
-        </div>
-        {/*/.single-testimonial-box*/}
-        <div className="single-testimonial-box">
-          <div className="testimonial-description">
-            <div className="testimonial-info">
-              <div className="testimonial-img">
-                <img src="assets/images/clients/c4.png" alt="clients" />
-              </div>
-              {/*/.testimonial-img*/}
-              <div className="testimonial-person">
-                <h2>Tom Leakar</h2>
-                <h4>london, UK</h4>
-                <div className="testimonial-person-star">
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                  <i className="fa fa-star" />
-                </div>
-              </div>
-              {/*/.testimonial-person*/}
-            </div>
-            {/*/.testimonial-info*/}
-            <div className="testimonial-comment">
-              <p>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                qui officia deserunt mollit anim id est laborum. Sed ut
-                perspiciatis eaque.
-              </p>
-            </div>
-            {/*/.testimonial-comment*/}
-          </div>
-          {/*/.testimonial-description*/}
-        </div>
-        {/*/.single-testimonial-box*/}
-      </div>
-    </div>
-  </section>
-  {/*/.reviews*/}
-  {/*reviews end */}
-  {/* statistics strat */}
+   
   <section id="statistics" className="statistics">
     <div className="container">
       <div className="statistics-counter">
@@ -1015,18 +739,17 @@ const DirectoryLandingPage = () => {
           <div className="col-md-4 col-sm-6">
             <div className="single-blog-item">
               <div className="single-blog-item-img">
-                <img src="home/blog/b1.jpg" alt="blog image" />
+                <img src={b1} alt="blog image" />
               </div>
               <div className="single-blog-item-txt">
                 <h2>
-                  <a href="#">How to find your Desired Place more quickly</a>
+                  <a href="#">How to Find Your Perfect Room Faster</a>
                 </h2>
                 <h4>
                   posted <span>by</span> <a href="#">admin</a> march 2018
                 </h4>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur de adipisicing elit,
-                  sed do eiusmod tempore incididunt ut labore et dolore magna.
+                Find the perfect room to rent, with spacious options and affordable prices. Our listings provide you with a variety of choices to meet your needs, ensuring comfort and convenience...
                 </p>
               </div>
             </div>
@@ -1034,18 +757,17 @@ const DirectoryLandingPage = () => {
           <div className="col-md-4 col-sm-6">
             <div className="single-blog-item">
               <div className="single-blog-item-img">
-                <img src="assets/images/blog/b2.jpg" alt="blog image" />
+                <img src={b2}alt="blog image" />
               </div>
               <div className="single-blog-item-txt">
                 <h2>
-                  <a href="#">How to find your Desired Place more quickly</a>
+                  <a href="#">How To Connect With My Friend Room Faster </a>
                 </h2>
                 <h4>
                   posted <span>by</span> <a href="#">admin</a> march 2018
                 </h4>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur de adipisicing elit,
-                  sed do eiusmod tempore incididunt ut labore et dolore magna.
+                Find the perfect room to rent, with spacious options and affordable prices. Our listings provide you with a variety of choices to meet your needs, ensuring comfort and convenience.
                 </p>
               </div>
             </div>
@@ -1053,18 +775,17 @@ const DirectoryLandingPage = () => {
           <div className="col-md-4 col-sm-6">
             <div className="single-blog-item">
               <div className="single-blog-item-img">
-                <img src="assets/images/blog/b3.jpg" alt="blog image" />
+                <img src={b3} alt="blog image" />
               </div>
               <div className="single-blog-item-txt">
                 <h2>
-                  <a href="#">How to find your Desired Place more quickly</a>
+                  <a href="#">How to Looking For Your Perfect Room Faster</a>
                 </h2>
                 <h4>
                   posted <span>by</span> <a href="#">admin</a> march 2018
                 </h4>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur de adipisicing elit,
-                  sed do eiusmod tempore incididunt ut labore et dolore magna.
+                Find the perfect room to rent, with spacious options and affordable prices. Our listings provide you with a variety of choices to meet your needs, ensuring comfort and convenience.
                 </p>
               </div>
             </div>
@@ -1080,10 +801,9 @@ const DirectoryLandingPage = () => {
   <section id="contact" className="subscription">
     <div className="container">
       <div className="subscribe-title text-center">
-        <h2>do you want to add your business listing with us?</h2>
+        <h2>Would You Like to Add Your Rental Listings with Us?</h2>
         <p>
-          Listrace offer you to list your business with us and we very much able
-          to promote your Business.
+        Listrace offers you the opportunity to list your business with us, and we are fully equipped to promote your business.
         </p>
       </div>
       <div className="row">
@@ -1117,7 +837,7 @@ const DirectoryLandingPage = () => {
           <div className="col-sm-3">
             <div className="navbar-header">
               <a className="navbar-brand" href="index.html">
-                list<span>race</span>
+                list<span>ROOM RENT</span>
               </a>
             </div>
             {/*/.navbar-header*/}
@@ -1150,16 +870,12 @@ const DirectoryLandingPage = () => {
       <div className="hm-footer-copyright">
         <div className="row">
           <div className="col-sm-5">
-            <p>
-              ©copyright. designed and developed by{" "}
-              <a href="https://www.themesine.com/">themesine</a>
-            </p>
             {/*/p*/}
           </div>
           <div className="col-sm-7">
             <div className="footer-social">
               <span>
-                <i className="fa fa-phone"> +1 (222) 777 8888</i>
+                <i className="fa fa-phone"> +84 0908 290 345</i>
               </span>
               <a href="#">
                 <i className="fa fa-facebook" />
@@ -1201,10 +917,24 @@ const DirectoryLandingPage = () => {
     );
 };
 const topics = [
-    { name: "restaurant", icon: "flaticon-restaurant", listings: 150 },
-    { name: "destination", icon: "flaticon-travel", listings: 214 },
-    { name: "hotels", icon: "flaticon-building", listings: 185 },
-    { name: "healthcare", icon: "flaticon-pills", listings: 200 },
-    { name: "automotion", icon: "flaticon-transport", listings: 120 },
+    { name: "room rent", icon: "flaticon-restaurant", listings: 150 },
+    { name: "technology", icon: "flaticon-travel", listings: 214 },
+    { name: "service", icon: "flaticon-building", listings: 185 },
+    { name: "rating", icon: "flaticon-pills", listings: 200 },
+    ,
+  ];
+
+  const scripts = [
+    "https://code.jquery.com/jquery-3.6.4.min.js",
+    "assets/js/jquery.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js",
+    "assets/js/bootstrap.min.js",
+    "assets/js/bootsnav.js",
+    "assets/js/feather.min.js",
+    "assets/js/jquery.counterup.min.js",
+    "assets/js/waypoints.min.js",
+    "assets/js/slick.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js",
+    "assets/js/custom.js"
   ];
 export default DirectoryLandingPage;
