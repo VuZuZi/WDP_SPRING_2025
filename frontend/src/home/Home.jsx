@@ -11,8 +11,10 @@ import './responsive.css';
 import './slick-theme.css';
 import './slick.css';
 
+
 const DirectoryLandingPage = () => {
     return (
+      
         <div>
  <header id="header-top" className="header-top">
       <ul>
@@ -26,6 +28,10 @@ const DirectoryLandingPage = () => {
                   <option value="Arabic">AB</option>
                 </select>
               </li>
+              <div className="mt-4">
+              <div className="mt-4">
+      </div>
+      </div>
               <li className="select-opt">
                 <select name="currency" id="currency">
                   <option value="usd">USD</option>
@@ -1009,7 +1015,7 @@ const DirectoryLandingPage = () => {
           <div className="col-md-4 col-sm-6">
             <div className="single-blog-item">
               <div className="single-blog-item-img">
-                <img src="assets/images/blog/b1.jpg" alt="blog image" />
+                <img src="home/blog/b1.jpg" alt="blog image" />
               </div>
               <div className="single-blog-item-txt">
                 <h2>
