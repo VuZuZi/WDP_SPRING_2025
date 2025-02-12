@@ -4,6 +4,8 @@ import AdminDashboard from "./pages/AdminDashBoard"
 import EmployeeDashboard from "./pages/EmployeeDashboard"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
+import Profile from "./pages/Profile";  
+
 function App() {
 
 
@@ -16,7 +18,7 @@ function App() {
         <Route path="/register" element={<Register />}></Route>
         <Route path="/admin-dashboard" element={<AdminDashboard/>}></Route>
         <Route path="/employee-dashboard" element={<EmployeeDashboard/>}></Route>
-        
+        <Route path="/profile" element={<Profile />}></Route>
     </Routes>
    </BrowserRouter>
   )
