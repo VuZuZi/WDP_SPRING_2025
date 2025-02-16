@@ -4,7 +4,7 @@ import User from "../models/User.js";
 // Lấy thông tin hồ sơ người dùng
 const getProfile = async (req, res) => {
     try {
-        const user = await User.findById(req.user._id).select("-password");
+        const user = await User.findById(req.user._id).select("name email phone profileImage"); // Chắc chắn lấy email
         if (!user) return res.status(404).json({ success: false, error: "User not found" });
 
         res.status(200).json({ success: true, user });
@@ -12,6 +12,7 @@ const getProfile = async (req, res) => {
         res.status(500).json({ success: false, error: error.message });
     }
 };
+
 
 // Cập nhật thông tin hồ sơ
 const updateProfile = async (req, res) => {

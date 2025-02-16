@@ -13,7 +13,7 @@ useEffect(() => {
       const token = localStorage.getItem("token");
       if (token) {
         try {
-          const res = await axios.get("http://localhost:5000/api/users/profile", {
+          const res = await axios.get("http://localhost:4000/api/users/profile", {
             headers: { Authorization: `Bearer ${token}` },
           });
           setUser(res.data);

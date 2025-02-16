@@ -1,15 +1,38 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../context/authContext";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import{ useNavigate, Link } from "react-router-dom";
 
 const Profile = () => {
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
   const [loading, setLoading] = useState(true);
   const [updatedUser, setUpdatedUser] = useState({ ...user });
   const [error, setError] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const res = await axios.get("http://localhost:4000/api/users/profile", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+  
+        setUpdatedUser(res.data.user); // Cập nhật user từ API
+        setLoading(false);
+      } catch (error) {
+        setError("Error fetching profile");
+        setLoading(false);
+      }
+    };
+  
+    if (!user) {
+      navigate("/login");
+    } else {
+      fetchProfile(); // Gọi API để lấy dữ liệu
+    }
+  }, [user, navigate]);
 
   useEffect(() => {
     if (!user) {
@@ -19,18 +42,22 @@ const Profile = () => {
     }
   }, [user, navigate]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUpdatedUser({
-      ...updatedUser,
-      [name]: value,
-    });
+ const handleChange = (e) => {
+  const { name, value, files } = e.target;
 
-    // Nếu người dùng thay đổi ảnh đại diện, cập nhật preview
-    if (name === "profileImage" && e.target.files) {
-      setImagePreview(URL.createObjectURL(e.target.files[0]));
-    }
-  };
+  if (name === "profileImage" && files.length > 0) {
+    setUpdatedUser((prev) => ({
+      ...prev,
+      profileImage: files[0], // Lưu file vào state
+    }));
+    setImagePreview(URL.createObjectURL(files[0]));
+  } else {
+    setUpdatedUser((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  }
+};
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,7 +72,7 @@ const Profile = () => {
       }
 
       const res = await axios.put(
-        "http://localhost:5000/api/users/profile",
+        "http://localhost:4000/api/users/profile",
         formData,
         {
           headers: {
@@ -94,7 +121,6 @@ const Profile = () => {
                 value={updatedUser.email || ""}
                 onChange={handleChange}
                 className="w-full px-4 py-2 border rounded"
-                disabled
               />
             </div>
 
@@ -140,12 +166,13 @@ const Profile = () => {
             </div>
           </form>
 
-          <button
-            onClick={logout}
-            className="mt-4 text-teal-600 hover:text-teal-800"
-          >
-            Logout
-          </button>
+          <Link
+  to="/"
+  className="mt-4 text-teal-600 hover:text-teal-800"
+>
+  Home
+</Link>
+
         </div>
       )}
     </div>
