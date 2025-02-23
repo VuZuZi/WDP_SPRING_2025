@@ -29,7 +29,6 @@ const RoomList = () => {
   const indexOfLastRoom = currentPage * roomsPerPage;
   const indexOfFirstRoom = indexOfLastRoom - roomsPerPage;
   const currentRooms = rooms.slice(indexOfFirstRoom, indexOfLastRoom);
-
   const totalPages = Math.ceil(rooms.length / roomsPerPage);
 
   const nextPage = () => {
@@ -46,13 +45,16 @@ const RoomList = () => {
   return (
     <div className="explore-content">
       <div className="row">
-        {currentRooms.map((room, index) => (
+        {currentRooms.map((room) => (
           <div key={room._id} className="col-md-4 col-sm-6">
             <div className="single-explore-item">
               <div className="single-explore-img">
-                <img src={`room-image-${index + 1}.jpg`} alt="explore image" />
+                <img
+                  src={room.Image ? `../src/img/${room.Image}.jpg` : "../src/img/p1.jpg"}
+                  alt="explore image"
+                />
               </div>
-              <div className={`single-explore-txt bg-theme-${index % 5 + 1}`}>
+              <div className={`single-explore-txt bg-theme-${Math.floor(Math.random() * 5) + 1}`}>
                 <h2>
                   <a href={`/room/${room.RoomID}`}>{room.Location}</a>
                 </h2>

@@ -131,37 +131,40 @@ const DirectoryLandingPage = () => {
       </div>
     </nav>
 
+    {/* <section id="home" className="welcome-hero py-16 bg-gray-100"> */}
+    
+    {/* </section> */}
     <section id="home" className="welcome-hero py-16 bg-gray-100">
-    <div className="absolute inset-0">
-    <img
-          src={logowelcome}
-          alt="City skyline at dusk with buildings and water"
-          className="w-full h-screen object-cover"
-          width="1920"
-          height="1080"
+  <div className="container mx-auto text-center">
+    <h1 className="text-7xl font-bold leading-tight">
+      Best place to find and explore <br /> that all you need
+    </h1>
+    <p className="text-gray-600 text-2xl mt-4">
+      Find Best Place, Restaurant, Hotel, Real Estate and many more in just one click
+    </p>
+    <div className="welcome-hero-serch-box mt-8 flex justify-center space-x-4">
+      <div className="single-welcome-hero-form bg-white p-4 shadow-md rounded-lg flex items-center">
+        <input 
+          type="text" 
+          placeholder="Ex: place, restaurant, food, automobile" 
+          className="border-none focus:outline-none text-lg"
         />
       </div>
-    </section>
-    <section id="home" className="welcome-hero py-16 bg-gray-100">
-      <div className="container mx-auto text-center">
-        <h2 className="text-4xl font-bold">Best place to find and explore <br /> that all you need</h2>
-        <p className="text-gray-600 mt-4">
-          Find Best Place, Restaurant, Hotel, Real Estate and many more in just one click
-        </p>
-        <div className="welcome-hero-serch-box mt-8 flex justify-center space-x-4">
-          <div className="single-welcome-hero-form bg-white p-4 shadow-md rounded-lg flex items-center">
-            <input type="text" placeholder="Ex: place, restaurant, food, automobile" className="border-none focus:outline-none" />
-          </div>
-          <div className="single-welcome-hero-form bg-white p-4 shadow-md rounded-lg flex items-center">
-            <input type="text" placeholder="Ex: London, New York, Rome" className="border-none focus:outline-none" />
-          </div>
-
-          <button className="welcome-hero-btn bg-red-500 text-white px-6 py-3 rounded-lg flex items-center">
-            Search <FiSearch className="ml-2" />
-          </button>
-        </div>
+      <div className="single-welcome-hero-form bg-white p-4 shadow-md rounded-lg flex items-center">
+        <input 
+          type="text" 
+          placeholder="Ex: London, New York, Rome" 
+          className="border-none focus:outline-none text-lg"
+        />
       </div>
-    </section>
+
+      <button className="welcome-hero-btn bg-red-500 text-white px-6 py-3 rounded-lg flex items-center text-xl">
+        Search <FiSearch className="ml-2" />
+      </button>
+    </div>
+  </div>
+</section>
+
     <section id="list-topics" className="list-topics">
       <div className="container">
         <div className="list-topics-content">
