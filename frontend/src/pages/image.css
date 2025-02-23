@@ -1,0 +1,21 @@
+.header-top-right ul {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Khoảng cách giữa các phần tử */
+  }
+  
+  .header-top-contact {
+    display: flex;
+    align-items: center;
+  }
+  
+  .avatar-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .head-responsive-right {
+    display: flex;
+    align-items: center;
+  }
