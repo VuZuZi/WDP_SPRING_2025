@@ -67,8 +67,8 @@ const DirectoryLandingPage = () => {
         <span className="text-black">List</span><span className="text-red">ROOM RENT</span>
       </div>
       <div className="nav-links">
-        <a href="#">HOME</a>
-        <a href="#">HOW IT WORKS</a>
+        <a href="/">HOME</a>
+        <a href="#">ROOM</a>
         <a href="#">EXPLORE</a>
         <a href="#">REVIEW</a>
         <a href="#">BLOG</a>
