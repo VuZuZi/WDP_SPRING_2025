@@ -1,15 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import b1 from "../../public/images/blog/b1.jpg";
 import b2 from "../../public/images/blog/b2.jpg";
 import b3 from "../../public/images/blog/b3.jpg";
-import e1 from "../../public/images/explore/e1.jpg";
-import e2 from "../../public/images/explore/e2.jpg";
-import e3 from "../../public/images/explore/e3.jpg";
-import e4 from "../../public/images/explore/e4.jpg";
-import e5 from "../../public/images/explore/e5.jpg";
-import e6 from "../../public/images/explore/e6.jpg";
-import person from "../../public/images/explore/person.png";
 import './animate.css';
 import './bootsnav.css';
 import './bootstrap.min.css';
@@ -22,6 +15,48 @@ import './slick-theme.css';
 import './slick.css';
 import logowelcome from "./welcome-hero/banner.jpg";
 const DirectoryLandingPage = () => {
+  const [rooms, setRooms] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const roomsPerPage = 6;
+
+  useEffect(() => {
+    const fetchRooms = async () => {
+      try {
+        const response = await fetch("http://localhost:4000/api/rooms/list");
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+
+        const data = await response.json();
+        setRooms(Array.isArray(data) ? data : data.rooms || []);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRooms();
+  }, []);
+
+  const indexOfLastRoom = currentPage * roomsPerPage;
+  const indexOfFirstRoom = indexOfLastRoom - roomsPerPage;
+  const currentRooms = rooms.slice(indexOfFirstRoom, indexOfLastRoom);
+
+  const totalPages = Math.ceil(rooms.length / roomsPerPage);
+
+  const nextPage = () => {
+    if (currentPage < totalPages) setCurrentPage((prev) => prev + 1);
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) setCurrentPage((prev) => prev - 1);
+  };
+
+  if (loading) return <p>Đang tải danh sách phòng...</p>;
+  if (error) return <p>Lỗi: {error}</p>;
+
+
     return (
       
         <div>
@@ -168,59 +203,56 @@ const DirectoryLandingPage = () => {
         <h2>explore</h2>
         <p>Explore New place, food, culture around the world and many more</p>
       </div>
-      {/*/.section-header*/}
       <div className="explore-content">
-        <div className="row">
-          <div className=" col-md-4 col-sm-6">
+      <div className="row">
+        {currentRooms.map((room, index) => (
+          <div key={room._id} className="col-md-4 col-sm-6">
             <div className="single-explore-item">
               <div className="single-explore-img">
-                <img src={e1} alt="explore image" />
+                <img src={`room-image-${index + 1}.jpg`} alt="explore image" />
                 <div className="single-explore-img-info">
-                  <button onclick="window.location.href='#'">best rated</button>
+                  <button onClick={() => window.location.href = '#'}>best rated</button>
                   <div className="single-explore-image-icon-box">
                     <ul>
                       <li>
                         <div className="single-explore-image-icon">
-                          <i className="fa fa-arrows-alt" />
+                          <i className="fa fa-arrows-alt"></i>
                         </div>
                       </li>
                       <li>
                         <div className="single-explore-image-icon">
-                          <i className="fa fa-bookmark-o" />
+                          <i className="fa fa-bookmark-o"></i>
                         </div>
                       </li>
                     </ul>
                   </div>
                 </div>
               </div>
-              <div className="single-explore-txt bg-theme-1">
+              <div className={`single-explore-txt bg-theme-${index % 5 + 1}`}>
                 <h2>
-                  <a href="#">tommy helfinger bar</a>
+                  <a href={`/room/${room.RoomID}`}>{room.Location}</a>
                 </h2>
                 <p className="explore-rating-price">
-                  <span className="explore-rating">5.0</span>
-                  <a href="#"> 10 ratings</a>
+                  <span className="explore-rating">{room.Status}</span>
+                  <a href="#"> {room.Price} ratings</a>
                   <span className="explore-price-box">
-                    form
-                    <span className="explore-price">5$-300$</span>
+                    from
+                    <span className="explore-price">{room.Price}$</span>
                   </span>
-                  <a href="#">resturent</a>
+                  <a href="#">restaurant</a>
                 </p>
                 <div className="explore-person">
                   <div className="row">
                     <div className="col-sm-2">
                       <div className="explore-person-img">
                         <a href="#">
-                          <img
-                            src={person}
-                            alt="explore person"
-                          />
+                          <img src="person.png" alt="explore person" />
                         </a>
                       </div>
                     </div>
                     <div className="col-sm-10">
                       <p>
-                      Find the perfect room to rent, with spacious options and affordable prices. Our listings provide you with a variety of choices to meet your needs, ensuring comfort and convenience....
+                        Find the perfect room to rent, with spacious options and affordable prices. Our listings provide you with a variety of choices to meet your needs, ensuring comfort and convenience...
                       </p>
                     </div>
                   </div>
@@ -228,105 +260,20 @@ const DirectoryLandingPage = () => {
                 <div className="explore-open-close-part">
                   <div className="row">
                     <div className="col-sm-5">
-                      <button
-                        className="close-btn"
-                        onclick="window.location.href='#'"
-                      >
-                        close now
-                      </button>
-                    </div>
-                    <div className="col-sm-7">
-                      <div className="explore-map-icon">
-                        <a href="#">
-                          <i data-feather="map-pin" />
-                        </a>
-                        <a href="#">
-                          <i data-feather="upload" />
-                        </a>
-                        <a href="#">
-                          <i data-feather="heart" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-4 col-sm-6">
-            <div className="single-explore-item">
-              <div className="single-explore-img">
-                <img src={e2} alt="explore image" />
-                <div className="single-explore-img-info">
-                  <button onclick="window.location.href='#'">featured</button>
-                  <div className="single-explore-image-icon-box">
-                    <ul>
-                      <li>
-                        <div className="single-explore-image-icon">
-                          <i className="fa fa-arrows-alt" />
-                        </div>
-                      </li>
-                      <li>
-                        <div className="single-explore-image-icon">
-                          <i className="fa fa-bookmark-o" />
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div className="single-explore-txt bg-theme-2">
-                <h2>
-                  <a href="#">swim and dine resort</a>
-                </h2>
-                <p className="explore-rating-price">
-                  <span className="explore-rating">4.5</span>
-                  <a href="#"> 8 ratings</a>
-                  <span className="explore-price-box">
-                    form
-                    <span className="explore-price">50$-500$</span>
-                  </span>
-                  <a href="#">hotel</a>
-                </p>
-                <div className="explore-person">
-                  <div className="row">
-                    <div className="col-sm-2">
-                      <div className="explore-person-img">
-                        <a href="#">
-                          <img
-                            src={person}
-                            alt="explore person"
-                          />
-                        </a>
-                      </div>
-                    </div>
-                    <div className="col-sm-10">
-                      <p>
-                      Find the perfect room to rent, with spacious options and affordable prices. Our listings provide you with a variety of choices to meet your needs, ensuring comfort and convenience...
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="explore-open-close-part">
-                  <div className="row">
-                    <div className="col-sm-5">
-                      <button
-                        className="close-btn open-btn"
-                        onclick="window.location.href='#'"
-                      >
+                      <button className="close-btn open-btn" onClick={() => window.location.href = '#'}>
                         open now
                       </button>
                     </div>
                     <div className="col-sm-7">
                       <div className="explore-map-icon">
                         <a href="#">
-                          <i data-feather="map-pin" />
+                          <i data-feather="map-pin"></i>
                         </a>
                         <a href="#">
-                          <i data-feather="upload" />
+                          <i data-feather="upload"></i>
                         </a>
                         <a href="#">
-                          <i data-feather="heart" />
+                          <i data-feather="heart"></i>
                         </a>
                       </div>
                     </div>
@@ -335,336 +282,19 @@ const DirectoryLandingPage = () => {
               </div>
             </div>
           </div>
-          <div className="col-md-4 col-sm-6">
-            <div className="single-explore-item">
-              <div className="single-explore-img">
-                <img src={e3} alt="explore image" />
-                <div className="single-explore-img-info">
-                  <button onclick="window.location.href='#'">best rated</button>
-                  <div className="single-explore-image-icon-box">
-                    <ul>
-                      <li>
-                        <div className="single-explore-image-icon">
-                          <i className="fa fa-arrows-alt" />
-                        </div>
-                      </li>
-                      <li>
-                        <div className="single-explore-image-icon">
-                          <i className="fa fa-bookmark-o" />
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div className="single-explore-txt bg-theme-3">
-                <h2>
-                  <a href="#">europe tour</a>
-                </h2>
-                <p className="explore-rating-price">
-                  <span className="explore-rating">5.0</span>
-                  <a href="#"> 15 ratings</a>
-                  <span className="explore-price-box">
-                    form
-                    <span className="explore-price">5k$-10k$</span>
-                  </span>
-                  <a href="#">destination</a>
-                </p>
-                <div className="explore-person">
-                  <div className="row">
-                    <div className="col-sm-2">
-                      <div className="explore-person-img">
-                        <a href="#">
-                          <img
-                            src={person}
-                            alt="explore person"
-                          />
-                        </a>
-                      </div>
-                    </div>
-                    <div className="col-sm-10">
-                      <p>
-                      Find the perfect room to rent, with spacious options and affordable prices. Our listings provide you with a variety of choices to meet your needs, ensuring comfort and convenience.....
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="explore-open-close-part">
-                  <div className="row">
-                    <div className="col-sm-5">
-                      <button
-                        className="close-btn"
-                        onclick="window.location.href='#'"
-                      >
-                        close now
-                      </button>
-                    </div>
-                    <div className="col-sm-7">
-                      <div className="explore-map-icon">
-                        <a href="#">
-                          <i data-feather="map-pin" />
-                        </a>
-                        <a href="#">
-                          <i data-feather="upload" />
-                        </a>
-                        <a href="#">
-                          <i data-feather="heart" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className=" col-md-4 col-sm-6">
-            <div className="single-explore-item">
-              <div className="single-explore-img">
-                <img src={e4} alt="explore image" />
-                <div className="single-explore-img-info">
-                  <button onclick="window.location.href='#'">most view</button>
-                  <div className="single-explore-image-icon-box">
-                    <ul>
-                      <li>
-                        <div className="single-explore-image-icon">
-                          <i className="fa fa-arrows-alt" />
-                        </div>
-                      </li>
-                      <li>
-                        <div className="single-explore-image-icon">
-                          <i className="fa fa-bookmark-o" />
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div className="single-explore-txt bg-theme-4">
-                <h2>
-                  <a href="#">banglow with swiming pool</a>
-                </h2>
-                <p className="explore-rating-price">
-                  <span className="explore-rating">5.0</span>
-                  <a href="#"> 10 ratings</a>
-                  <span className="explore-price-box">
-                    form
-                    <span className="explore-price">10k$-15k$</span>
-                  </span>
-                  <a href="#">real estate</a>
-                </p>
-                <div className="explore-person">
-                  <div className="row">
-                    <div className="col-sm-2">
-                      <div className="explore-person-img">
-                        <a href="#">
-                          <img
-                            src={person}
-                            alt="explore person"
-                          />
-                        </a>
-                      </div>
-                    </div>
-                    <div className="col-sm-10">
-                      <p>
-                      Find the perfect room to rent, with spacious options and affordable prices. Our listings provide you with a variety of choices to meet your needs, ensuring comfort and convenience.....
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="explore-open-close-part">
-                  <div className="row">
-                    <div className="col-sm-5">
-                      <button
-                        className="close-btn"
-                        onclick="window.location.href='#'"
-                      >
-                        close now
-                      </button>
-                    </div>
-                    <div className="col-sm-7">
-                      <div className="explore-map-icon">
-                        <a href="#">
-                          <i data-feather="map-pin" />
-                        </a>
-                        <a href="#">
-                          <i data-feather="upload" />
-                        </a>
-                        <a href="#">
-                          <i data-feather="heart" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-4 col-sm-6">
-            <div className="single-explore-item">
-              <div className="single-explore-img">
-                <img src={e5} alt="explore image" />
-                <div className="single-explore-img-info">
-                  <button onclick="window.location.href='#'">featured</button>
-                  <div className="single-explore-image-icon-box">
-                    <ul>
-                      <li>
-                        <div className="single-explore-image-icon">
-                          <i className="fa fa-arrows-alt" />
-                        </div>
-                      </li>
-                      <li>
-                        <div className="single-explore-image-icon">
-                          <i className="fa fa-bookmark-o" />
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div className="single-explore-txt bg-theme-2">
-                <h2>
-                  <a href="#">vintage car expo</a>
-                </h2>
-                <p className="explore-rating-price">
-                  <span className="explore-rating">4.2</span>
-                  <a href="#"> 8 ratings</a>
-                  <span className="explore-price-box">
-                    form
-                    <span className="explore-price">500$-1200$</span>
-                  </span>
-                  <a href="#">automotion</a>
-                </p>
-                <div className="explore-person">
-                  <div className="row">
-                    <div className="col-sm-2">
-                      <div className="explore-person-img">
-                        <a href="#">
-                          <img
-                            src={person}
-                            alt="explore person"
-                          />
-                        </a>
-                      </div>
-                    </div>
-                    <div className="col-sm-10">
-                      <p>
-                      Find the perfect room to rent, with spacious options and affordable prices. Our listings provide you with a variety of choices to meet your needs, ensuring comfort and convenience.....
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="explore-open-close-part">
-                  <div className="row">
-                    <div className="col-sm-5">
-                      <button
-                        className="close-btn open-btn"
-                        onclick="window.location.href='#'"
-                      >
-                        open now
-                      </button>
-                    </div>
-                    <div className="col-sm-7">
-                      <div className="explore-map-icon">
-                        <a href="#">
-                          <i data-feather="map-pin" />
-                        </a>
-                        <a href="#">
-                          <i data-feather="upload" />
-                        </a>
-                        <a href="#">
-                          <i data-feather="heart" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-4 col-sm-6">
-            <div className="single-explore-item">
-              <div className="single-explore-img">
-                <img src={e6} alt="explore image" />
-                <div className="single-explore-img-info">
-                  <button onclick="window.location.href='#'">best rated</button>
-                  <div className="single-explore-image-icon-box">
-                    <ul>
-                      <li>
-                        <div className="single-explore-image-icon">
-                          <i className="fa fa-arrows-alt" />
-                        </div>
-                      </li>
-                      <li>
-                        <div className="single-explore-image-icon">
-                          <i className="fa fa-bookmark-o" />
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div className="single-explore-txt bg-theme-5">
-                <h2>
-                  <a href="#">thailand tour</a>
-                </h2>
-                <p className="explore-rating-price">
-                  <span className="explore-rating">5.0</span>
-                  <a href="#"> 15 ratings</a>
-                  <span className="explore-price-box">
-                    form
-                    <span className="explore-price">5k$-10k$</span>
-                  </span>
-                  <a href="#">destination</a>
-                </p>
-                <div className="explore-person">
-                  <div className="row">
-                    <div className="col-sm-2">
-                      <div className="explore-person-img">
-                        <a href="#">
-                          <img
-                            src={person}
-                            alt="explore person"
-                          />
-                        </a>
-                      </div>
-                    </div>
-                    <div className="col-sm-10">
-                      <p>
-                      Find the perfect room to rent, with spacious options and affordable prices. Our listings provide you with a variety of choices to meet your needs, ensuring comfort and convenience.....
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="explore-open-close-part">
-                  <div className="row">
-                    <div className="col-sm-5">
-                      <button
-                        className="close-btn"
-                        onclick="window.location.href='#'"
-                      >
-                        close now
-                      </button>
-                    </div>
-                    <div className="col-sm-7">
-                      <div className="explore-map-icon">
-                        <a href="#">
-                          <i data-feather="map-pin" />
-                        </a>
-                        <a href="#">
-                          <i data-feather="upload" />
-                        </a>
-                        <a href="#">
-                          <i data-feather="heart" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
+
+      {/* Phân trang */}
+      <div className="pagination">
+        <button onClick={prevPage} disabled={currentPage === 1}>
+          &laquo; Trang trước
+        </button>
+        <button onClick={nextPage} disabled={currentPage === totalPages}>
+          Trang sau &raquo;
+        </button>
+      </div>
+    </div>
     </div>
     {/*/.container*/}
    

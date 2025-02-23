@@ -1,0 +1,90 @@
+
+.body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+  }
+  
+  .navbar {
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .navbar.bg-light {
+    background-color: #f8f9fa !important;
+  }
+  
+  .navbar.bg-white {
+    background-color: #ffffff !important;
+  }
+  
+  .navbar .navbar-brand img {
+    height: 40px;
+  }
+  
+  .navbar .nav-link {
+    color: #000;
+  }
+  
+  .navbar .nav-link:hover {
+    color: #007bff;
+  }
+  
+  .container {
+    flex: 1;
+  }
+  
+  .card {
+    margin-top: 20px;
+  }
+  
+  .card img {
+    max-height: 300px;
+    object-fit: cover;
+  }
+  
+  .card .card-body {
+    padding: 20px;
+  }
+  
+  .card .card-title {
+    font-size: 2rem; /* Increase font size */
+    margin-bottom: 10px;
+  }
+  
+  .card .card-text {
+    font-size: 1.25rem; /* Increase font size */
+    margin-bottom: 10px;
+  }
+  
+  .card .card-text strong {
+    font-weight: bold;
+  }
+  
+  .text-success {
+    color: #28a745 !important;
+  }
+  
+  .text-danger {
+    color: #dc3545 !important;
+  }
+  
+  footer {
+    background-color: #607d8b;
+    color: white;
+    padding: 20px 0;
+  }
+  
+  footer .footer-cta {
+    margin: 10px;
+  }
+  
+  footer .footer-cta:hover {
+    background-color: #ffffff;
+    color: #607d8b;
+  }
+  
+  footer .p-3 {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  
