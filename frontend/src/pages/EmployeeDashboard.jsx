@@ -52,7 +52,7 @@ const EmployeeDashboard = () =>{
                <span className="text-black">List</span><span className="text-red">ROOM RENT</span>
              </div>
              <div className="nav-links">
-               <a href="/">HOME</a>
+               <a href="#">HOME</a>
                <a href="#">ROOM</a>
                <a href="#">EXPLORE</a>
                <a href="#">REVIEW</a>
