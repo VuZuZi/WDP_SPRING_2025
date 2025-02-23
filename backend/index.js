@@ -21,6 +21,7 @@ import connectToDatabase from "./db/db.js";
 import authRouter from './routes/auth.js';
 import userRouter from "./routes/userRoutes.js";
 
+import roomRouter from './routes/room.js';
 dotenv.config(); // Load biến môi trường
 
 const app = express();
@@ -34,6 +35,7 @@ app.use(express.json());
 app.use('/api/auth', authRouter)
 app.use("/api/user", userRouter);
 
+app.use('/api/rooms', roomRouter)
 app.listen(PORT, () => {
   console.log(`🚀 Server is running on port ${PORT}`);
 });

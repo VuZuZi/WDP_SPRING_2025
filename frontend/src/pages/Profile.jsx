@@ -41,7 +41,7 @@ const Profile = () => {
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    
+
     if (name === "profileImage" && files.length > 0) {
       const file = files[0];
       setUpdatedUser((prev) => ({
@@ -56,26 +56,26 @@ const Profile = () => {
       }));
     }
   };
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     // Kiểm tra xem có thay đổi gì không
     if (updatedUser.name === user.name && updatedUser.email === user.email && updatedUser.phone === user.phone && !updatedUser.profileImage) {
       alert("No changes made to the profile!");
       return;
     }
-  
+
     const token = localStorage.getItem("token");
     const formData = new FormData();
     formData.append("name", updatedUser.name);
     formData.append("email", updatedUser.email);
     formData.append("phone", updatedUser.phone);
-  
+
     if (updatedUser.profileImage instanceof File) {
       formData.append("profileImage", updatedUser.profileImage);
     }
-  
+
     try {
       const res = await axios.put(
         "http://localhost:4000/api/user/profile",
@@ -87,7 +87,7 @@ const Profile = () => {
           },
         }
       );
-  
+
       setUpdatedUser(res.data.user);
       setIsEditing(false);
       alert("Profile updated successfully!");
@@ -96,14 +96,14 @@ const Profile = () => {
       console.error("Error updating profile:", error.response ? error.response.data : error);
     }
   };
-  
+
   const handleEdit = () => {
     setIsEditing(true);
   };
 
   const handleCancelEdit = () => {
     setIsEditing(false);
-    setUpdatedUser({ ...user });  
+    setUpdatedUser({ ...user });
   };
 
   return (
