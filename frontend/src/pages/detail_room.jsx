@@ -7,6 +7,15 @@ const DetailRoom = () => {
   const [room, setRoom] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null); // Không cần giá trị mặc định ở đây
+
+  // Xử lý upload ảnh
+  const handleUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setImageUrl(URL.createObjectURL(file)); // Cập nhật URL của ảnh tải lên
+    }
+  };
 
   useEffect(() => {
     const fetchRoomDetails = async () => {
@@ -17,6 +26,12 @@ const DetailRoom = () => {
         }
         const data = await response.json();
         setRoom(data.data);
+        // Nếu không có ảnh trong db, sử dụng ảnh mặc định
+        if (data.data.Image) {
+          setImageUrl(`../src/img/${data.data.Image}.jpg`);
+        } else {
+          // setImageUrl(`../src/img/p1.jpg`); // Ảnh mặc định
+        }
       } catch (error) {
         setError(error.message);
       } finally {
@@ -37,7 +52,11 @@ const DetailRoom = () => {
       <h1 className="text-center mb-4">Chi tiết phòng</h1>
       {room ? (
         <div className="card shadow-lg p-4">
-          <img src={room.Image || "https://via.placeholder.com/600x300"} className="card-img-top" alt="Room" />
+          {/* Hiển thị ảnh từ backend hoặc ảnh tải lên */}
+          <div>
+           
+            {imageUrl && <img src={imageUrl} alt="Uploaded" width="200px" />}
+          </div>
           <div className="card-body">
             <h5 className="card-title">Phòng #{room.RoomID}</h5>
             <p className="card-text"><strong>Giá:</strong> {room.Price.toLocaleString()} VNĐ</p>
@@ -112,4 +131,3 @@ const App = () => {
 };
 
 export default App;
-
