@@ -123,7 +123,7 @@ const DirectoryLandingPage = () => {
       </div>
       <div className="nav-links">
         <a href="/">HOME</a>
-        <a href="#">ROOM</a>
+        <a href="/room">ROOM</a>
         <a href="#">EXPLORE</a>
         <a href="#">REVIEW</a>
         <a href="#">BLOG</a>
@@ -231,9 +231,12 @@ const DirectoryLandingPage = () => {
           <div key={room._id} className="col-md-4 col-sm-6">
             <div className="single-explore-item">
               <div className="single-explore-img">
-                <img src={`room-image-${index + 1}.jpg`} alt="explore image" />
+              <img
+                  src={room.Image ? `../src/img/${room.Image}.jpg` : "../src/img/p1.jpg"}
+                  alt="explore image"
+                />
                 <div className="single-explore-img-info">
-                  <button onClick={() => window.location.href = '#'}>best rated</button>
+                  <button onClick={() => window.location.href = `${{b1}}`}>best rated</button>
                   <div className="single-explore-image-icon-box">
                     <ul>
                       <li>
