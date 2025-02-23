@@ -5,6 +5,7 @@ import EmployeeDashboard from "./pages/EmployeeDashboard"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
 import Profile from "./pages/Profile";  
+import ChangePassword from "./pages/ChangePassword";
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/admin-dashboard" element={<AdminDashboard/>}></Route>
         <Route path="/employee-dashboard" element={<EmployeeDashboard/>}></Route>
         <Route path="/profile" element={<Profile />}></Route>
+        <Route path="/change-password" element={<ChangePassword />} ></Route>
     </Routes>
    </BrowserRouter>
   )

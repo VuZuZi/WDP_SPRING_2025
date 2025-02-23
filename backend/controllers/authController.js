@@ -1,85 +1,96 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
+
 const login = async (req, res) => {
     try {
-        const {email, password} = req.body;
-        const user = await User.findOne({email})
-        if(!user) {
-            res.status(404).json({success: false, error: "User Not Found"})
+        const { email, password } = req.body;
+        const user = await User.findOne({ email });
+
+        // Check if user exists
+        if (!user) {
+            return res.status(401).json({ success: false, error: "User not found" });
         }
 
-        const isMatch = await bcrypt.compare(password, user.password)
-        if(!isMatch){
-            res.status(404).json({success: false, error:"Wrong password"})
+        // Check if password matches
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(401).json({ success: false, error: "Wrong password" });
         }
 
-        const token = jwt.sign({_id: user._id, role: user.role},
-            process.env.JWT_KEY, {expiresIn: "10d"}
-            )
-        res.status(200).json({
+        // Generate JWT token
+        const token = jwt.sign(
+            { _id: user._id, role: user.role },
+            process.env.JWT_KEY, 
+            { expiresIn: "10d" }
+        );
+
+        // Send the response with the token and user details
+        return res.status(200).json({
             success: true, 
             token, 
-            user: {_id: user._id, name: user.name, role : user.role}});
-
+            user: { _id: user._id, name: user.name, role: user.role }
+        });
+        
     } catch (error) {
-        res.status(500).json({success: false, error: error.message})
+        console.error("Login Error:", error.message);
+        return res.status(500).json({ success: false, error: error.message });
     }
 }
 
-    const verify = (req, res) =>{
-        return res.status(200).json({success: true, user: req.user})
-    }
+const verify = (req, res) => {
+    return res.status(200).json({ success: true, user: req.user });
+}
 
-    const register = async (req, res) => {
-        try {
-            const { name, email, password, role } = req.body;
-    
-            // Kiểm tra nếu email đã tồn tại
-            const existingUser = await User.findOne({ email });
-            if (existingUser) {
-                return res.status(400).json({ success: false, error: "Email already exists" });
-            }
-    
-            // Mã hóa mật khẩu
-            const hashedPassword = await bcrypt.hash(password, 10);
-    
-            // Xác định role (mặc định là "employee")
-            const userRole = role === "admin" ? "admin" : "employee";
-    
-            // Tạo người dùng mới
-            const newUser = new User({
-                name,
-                email,
-                password: hashedPassword,
-                role: userRole
-            });
-    
-            // Lưu vào database
-            await newUser.save();
-    
-            // Kiểm tra biến môi trường JWT_KEY
-            if (!process.env.JWT_KEY) {
-                return res.status(500).json({ success: false, error: "Missing JWT_KEY in server configuration" });
-            }
-    
-            // Tạo token
-            const token = jwt.sign(
-                { _id: newUser._id, role: newUser.role }, 
-                process.env.JWT_KEY, 
-                { expiresIn: "10d" }
-            );
-    
-            res.status(201).json({
-                success: true,
-                token,
-                user: { _id: newUser._id, name: newUser.name, role: newUser.role }
-            });
-    
-        } catch (error) {
-            console.error("Register Error:", error.message);
-            res.status(500).json({ success: false, error: error.message });
+const register = async (req, res) => {
+    try {
+        const { name, email, password, role } = req.body;
+
+        // Check if email already exists
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(400).json({ success: false, error: "Email already exists" });
         }
-    };
-export { login, register, verify };
 
+        // Hash password
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        // Determine role (default to "employee")
+        const userRole = role === "admin" ? "admin" : "employee";
+
+        // Create new user
+        const newUser = new User({
+            name,
+            email,
+            password: hashedPassword,
+            role: userRole
+        });
+
+        // Save to database
+        await newUser.save();
+
+        // Check if JWT_KEY is configured
+        if (!process.env.JWT_KEY) {
+            return res.status(500).json({ success: false, error: "Missing JWT_KEY in server configuration" });
+        }
+
+        // Generate JWT token
+        const token = jwt.sign(
+            { _id: newUser._id, role: newUser.role },
+            process.env.JWT_KEY, 
+            { expiresIn: "10d" }
+        );
+
+        return res.status(201).json({
+            success: true,
+            token,
+            user: { _id: newUser._id, name: newUser.name, role: newUser.role }
+        });
+
+    } catch (error) {
+        console.error("Register Error:", error.message);
+        return res.status(500).json({ success: false, error: error.message });
+    }
+};
+
+export { login, register, verify };

@@ -1,5 +1,7 @@
 import bcrypt from "bcrypt";
 import User from "../models/User.js";
+import multer from "multer";
+import path from "path";
 
 // Lấy thông tin hồ sơ người dùng
 const getProfile = async (req, res) => {
@@ -15,18 +17,28 @@ const getProfile = async (req, res) => {
 
 
 // Cập nhật thông tin hồ sơ
-const updateProfile = async (req, res) => {
+const updateUserProfile = async (req, res) => {
     try {
-        const { name, email } = req.body;
-        const updatedUser = await User.findByIdAndUpdate(
-            req.user._id,
-            { name, email },
-            { new: true, runValidators: true }
-        ).select("-password");
+        // Lấy thông tin người dùng từ request (req.user sẽ được gán bởi middleware verifyUser)
+        const user = req.user;
+        
+        // Cập nhật các thông tin cần thiết
+        user.name = req.body.name || user.name;
+        user.email = req.body.email || user.email;
+        user.phone = req.body.phone || user.phone;
 
-        res.status(200).json({ success: true, user: updatedUser });
+        // Nếu có ảnh mới, cập nhật ảnh người dùng
+        if (req.file) {
+            user.profileImage = req.file.path;
+        }
+
+        await user.save();
+
+        // Trả về thông tin người dùng sau khi cập nhật
+        res.json({ success: true, user });
     } catch (error) {
-        res.status(500).json({ success: false, error: error.message });
+        console.error(error);
+        res.status(500).json({ success: false, error: "Error updating profile" });
     }
 };
 
@@ -69,4 +81,18 @@ const updateAvatar = async (req, res) => {
     }
 };
 
-export { getProfile, updateProfile, changePassword, updateAvatar };
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads/'); // Thư mục lưu trữ ảnh
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + path.extname(file.originalname)); 
+    },
+});
+
+const upload = multer({ storage });
+
+
+
+export { getProfile, updateUserProfile , changePassword, updateAvatar };
+
