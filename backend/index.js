@@ -19,6 +19,8 @@ import dotenv from "dotenv";
 import express from "express";
 import connectToDatabase from "./db/db.js";
 import authRouter from './routes/auth.js';
+import userRouter from "./routes/userRoutes.js";
+
 import roomRouter from './routes/room.js';
 dotenv.config(); // Load biến môi trường
 
@@ -31,6 +33,8 @@ connectToDatabase();
 app.use(cors());
 app.use(express.json());
 app.use('/api/auth', authRouter)
+app.use("/api/user", userRouter);
+
 app.use('/api/rooms', roomRouter)
 app.listen(PORT, () => {
   console.log(`🚀 Server is running on port ${PORT}`);

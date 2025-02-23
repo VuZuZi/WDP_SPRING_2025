@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema({
         } 
     },
     profileImage: {type : String},
+    phone: {type : String},
     createAT: {type : Date, default: Date.now},
     updateAT: {type : Date, default: Date.now},
 })

@@ -7,12 +7,16 @@ const verifyUser = async (req, res, next) => {
         const token = req.headers.authorization && req.headers.authorization.split(' ')[1];
         
         if (!token) {
-            
             return res.status(400).json({ success: false, error: "Token not provided" });
         }
 
         // Verify the token
-        const decoded = jwt.verify(token, process.env.JWT_KEY);
+        let decoded;
+        try {
+            decoded = jwt.verify(token, process.env.JWT_KEY);
+        } catch (error) {
+            return res.status(401).json({ success: false, error: "Token is invalid or expired" });
+        }
 
         // If token is invalid, decoded will be null or throw an error
         if (!decoded || !decoded._id) {

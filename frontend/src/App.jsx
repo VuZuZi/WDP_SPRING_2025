@@ -5,6 +5,8 @@ import EmployeeDashboard from "./pages/EmployeeDashboard"
 import Login from "./pages/Login"
 import Profile from "./pages/Profile"
 import Register from "./pages/Register"
+import ChangePassword from "./pages/ChangePassword";
+
 import DetailRoom from "./pages/detail_room"
 import Room from "./pages/room"
 function App() {
@@ -22,7 +24,7 @@ function App() {
         <Route path="/register" element={<Register />}></Route>
         <Route path="/admin-dashboard" element={<AdminDashboard/>}></Route>
         <Route path="/employee-dashboard" element={<EmployeeDashboard/>}></Route>
-        
+        <Route path="/change-password" element={<ChangePassword />} ></Route>
     </Routes>
    </BrowserRouter>
   )

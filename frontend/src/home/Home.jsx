@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
+import { useAuth } from "../context/AuthContext";
+import { Link } from 'react-router-dom';
+
+
 import b1 from "../../public/images/blog/b1.jpg";
 import b2 from "../../public/images/blog/b2.jpg";
 import b3 from "../../public/images/blog/b3.jpg";
@@ -15,6 +19,7 @@ import './slick-theme.css';
 import './slick.css';
 import logowelcome from "./welcome-hero/banner.jpg";
 const DirectoryLandingPage = () => {
+  const { user, logout } = useAuth();
   const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -58,45 +63,60 @@ const DirectoryLandingPage = () => {
 
 
     return (
-      
+
         <div>
  <header id="header-top" className="header-top">
-      <ul>
-        <li>
-          <div className="header-top-left">
             <ul>
-              <li className="select-opt">
-                <select name="language" id="language">
-                  <option value="default">EN</option>
-                  <option value="Bangla">BN</option>
-                  <option value="Arabic">AB</option>
-                </select> 
-              </li>
-                
-              <li className="select-opt">
-                <select name="currency" id="currency">
-                  <option value="usd">USD</option>
-                  <option value="euro">Euro</option>
-                  <option  ption value="bdt">BDT</option>
-                </select>
-              </li>
-              <li className="select-opt">
-                <a href="#"><span className="lnr lnr-magnifier"></span></a>
-              </li>
+                <li>
+                    <div className="header-top-left">
+                        <ul>
+                            <li className="select-opt">
+                                <select name="language" id="language">
+                                    <option value="default">EN</option>
+                                    <option value="Bangla">BN</option>
+                                    <option value="Arabic">AB</option>
+                                </select>
+                            </li>
+
+                            <li className="select-opt">
+                                <select name="currency" id="currency">
+                                    <option value="usd">USD</option>
+                                    <option value="euro">Euro</option>
+                                    <option value="bdt">BDT</option>
+                                </select>
+                            </li>
+                            <li className="select-opt">
+                                <a href="#"><span className="lnr lnr-magnifier"></span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li className="head-responsive-right pull-right">
+                    <div className="header-top-right">
+                        <ul>
+                            <li className="header-top-contact">+84 0908 290 345</li>
+
+                            {user ? (
+                                <>
+                                    <li className="header-top-contact">Hello, {user.name}</li>
+                                    <li className="header-top-contact">
+                                        <Link to="/profile">My Profile</Link>
+                                    </li>
+                                    <li className="header-top-contact">
+                                        <button onClick={logout} className="logout-btn">Logout</button>
+                                    </li>
+                                </>
+                            ) : (
+                                <>
+                                    <li className="header-top-contact"><Link to="/login">Sign In</Link></li>
+                                    <li className="header-top-contact"><Link to="/register">Register</Link></li>
+                                </>
+                            )}
+                        </ul>
+                    </div>
+                </li>
             </ul>
-          </div>
-        </li>
-        <li className="head-responsive-right pull-right">
-          <div className="header-top-right">
-            <ul>
-              <li className="header-top-contact">+84 0908 290 345</li>
-              <li className="header-top-contact"><a href="/login">sign in</a></li>
-              <li className="header-top-contact"><a href="/register">register</a></li>
-            </ul>
-          </div>
-        </li>
-      </ul>
-    </header>
+        </header>
     <nav className="navbar">
       <div className="logo">
         <span className="text-black">List</span><span className="text-red">ROOM RENT</span>
@@ -121,14 +141,13 @@ const DirectoryLandingPage = () => {
           height="1080"
         />
       </div>
-      <div className="overlay"></div>
-        <div className="text-container">
-          <h1>
-          BEST PLACE TO FIND AND EXPLORE RENTAL ROOMS THAT SUIT ALL YOUR NEEDS.
-          </h1>
-          <p>
-          Find for rooms, apartments, rentals and more with just one click.
-          </p>
+    </section>
+    <section id="home" className="welcome-hero py-16 bg-gray-100">
+      <div className="container mx-auto text-center">
+        <h2 className="text-4xl font-bold">Best place to find and explore <br /> that all you need</h2>
+        <p className="text-gray-600 mt-4">
+          Find Best Place, Restaurant, Hotel, Real Estate and many more in just one click
+        </p>
         <div className="welcome-hero-serch-box mt-8 flex justify-center space-x-4">
           <div className="single-welcome-hero-form bg-white p-4 shadow-md rounded-lg flex items-center">
             <input type="text" placeholder="Ex: place, restaurant, food, automobile" className="border-none focus:outline-none" />
@@ -136,7 +155,7 @@ const DirectoryLandingPage = () => {
           <div className="single-welcome-hero-form bg-white p-4 shadow-md rounded-lg flex items-center">
             <input type="text" placeholder="Ex: London, New York, Rome" className="border-none focus:outline-none" />
           </div>
-          
+
           <button className="welcome-hero-btn bg-red-500 text-white px-6 py-3 rounded-lg flex items-center">
             Search <FiSearch className="ml-2" />
           </button>
@@ -297,7 +316,7 @@ const DirectoryLandingPage = () => {
     </div>
     </div>
     {/*/.container*/}
-   
+
   <section id="statistics" className="statistics">
     <div className="container">
       <div className="statistics-counter">
