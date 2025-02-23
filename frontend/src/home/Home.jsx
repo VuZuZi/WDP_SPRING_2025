@@ -38,7 +38,6 @@ const DirectoryLandingPage = () => {
                 </select> 
               </li>
                 
-              
               <li className="select-opt">
                 <select name="currency" id="currency">
                   <option value="usd">USD</option>
