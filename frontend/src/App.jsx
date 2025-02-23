@@ -9,6 +9,7 @@ import ChangePassword from "./pages/ChangePassword";
 
 import DetailRoom from "./pages/detail_room"
 import Room from "./pages/room"
+
 function App() {
 
 
@@ -22,9 +23,10 @@ function App() {
         <Route path="/profile" element={<Profile />}></Route>
         <Route path="/room" element={<Room />}></Route>
         <Route path="/register" element={<Register />}></Route>
-        <Route path="/admin-dashboard" element={<AdminDashboard/>}></Route>
+        <Route path="/admin-dashboard" element={<AdminDashboard />}></Route>
         <Route path="/employee-dashboard" element={<EmployeeDashboard/>}></Route>
         <Route path="/change-password" element={<ChangePassword />} ></Route>
+
     </Routes>
    </BrowserRouter>
   )
