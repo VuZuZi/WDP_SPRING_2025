@@ -30,11 +30,10 @@ useEffect(() => {
             try {
                 const token = localStorage.getItem("token");
                 if (token) {
-                    const response = await axios.get("http://localhost:4000/api/auth/verify", {
-                        headers: {
-                            Authorization: `Bearer ${token}`,
-                        },
-                    });
+                    const response = await axios.post("http://localhost:4000/api/auth/verify", {}, {
+                        headers: { Authorization: `Bearer ${token}` },
+                      });
+                      
 
                     if (response.data.success && response.data.user) {
                         setUser(response.data.user); // Lưu thông tin người dùng vào state

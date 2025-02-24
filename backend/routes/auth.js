@@ -9,4 +9,5 @@ router.post('/login', login)
 router.post('/verify', authMiddleware, verify)
 
 router.post('/register', register)
+
 export default router;
