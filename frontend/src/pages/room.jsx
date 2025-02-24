@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './detail_room.css';
+import './room.css';
 
 const RoomList = () => {
   const [rooms, setRooms] = useState([]);
@@ -44,6 +45,19 @@ const RoomList = () => {
 
   return (
     <div className="explore-content">
+           <nav className="navbar">
+      <div className="logo">
+        <span className="text-black">List</span><span className="text-red">ROOM RENT</span>
+      </div>
+      <div className="nav-links">
+        <a href="/">HOME</a>
+        <a href="/room">ROOM</a>
+        <a href="#">EXPLORE</a>
+        <a href="#">REVIEW</a>
+        <a href="#">BLOG</a>
+        <a href="#">CONTACT</a>
+      </div>
+    </nav> 
       <div className="row">
         {currentRooms.map((room) => (
           <div key={room._id} className="col-md-4 col-sm-6">

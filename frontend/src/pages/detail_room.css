@@ -1,90 +1,168 @@
 
 .body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    font-family: Arial, sans-serif;
-  }
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  padding-top: 80px;
+} 
+
+
+
+ .navbar {
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
   
-  .navbar {
-    transition: background-color 0.3s, box-shadow 0.3s;
-  }
+.navbar {
+
+top: 0;
+left: 0;
+width: 100%;
+background-color: #ffffff !important;
+padding: 10px 20px;
+z-index: 1000;
+}
+
   
-  .navbar.bg-light {
-    background-color: #f8f9fa !important;
-  }
-  
-  .navbar.bg-white {
-    background-color: #ffffff !important;
-  }
-  
+.navbar.bg-light {
+  background-color: #f8f9fa !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.navbar.bg-white {
+  background-color: #ffffff !important;
+}
+
   .navbar .navbar-brand img {
-    height: 40px;
-  }
+  height: 40px;
+}
   
-  .navbar .nav-link {
-    color: #000;
-  }
-  
-  .navbar .nav-link:hover {
-    color: #007bff;
-  }
-  
-  .container {
-    flex: 1;
-  }
-  
-  .card {
-    margin-top: 20px;
-  }
-  
-  .card img {
-    max-height: 300px;
-    object-fit: cover;
-  }
-  
-  .card .card-body {
-    padding: 20px;
-  }
-  
-  .card .card-title {
-    font-size: 2rem; /* Increase font size */
-    margin-bottom: 10px;
-  }
-  
-  .card .card-text {
-    font-size: 1.25rem; /* Increase font size */
-    margin-bottom: 10px;
-  }
-  
-  .card .card-text strong {
-    font-weight: bold;
-  }
-  
-  .text-success {
-    color: #28a745 !important;
-  }
-  
-  .text-danger {
-    color: #dc3545 !important;
-  }
-  
-  footer {
-    background-color: #607d8b;
-    color: white;
-    padding: 20px 0;
-  }
-  
-  footer .footer-cta {
-    margin: 10px;
-  }
-  
-  footer .footer-cta:hover {
-    background-color: #ffffff;
-    color: #607d8b;
-  }
-  
-  footer .p-3 {
-    background-color: rgba(0, 0, 0, 0.2);
-  }
-  
+.navbar .nav-link {
+  color: #000;
+}
+
+ .navbar .nav-link:hover {
+  color: #007bff;
+}
+.navbar.fixed-top {
+  top: 0;
+  margin-top: 0;
+  padding-top: 0;
+}
+.body-content {
+padding-top: 80px; /* Giữ khoảng cách với navbar */
+max-width: 800px;
+margin: auto;
+}
+
+
+.card {
+  margin-top: 20px;
+}
+ 
+.card img {
+  max-height: 300px;
+  object-fit: cover;
+}
+
+.card .card-body {
+  padding: 20px;
+}
+
+.card .card-title {
+  font-size: 2rem; /* Increase font size */
+  margin-bottom: 10px;
+} 
+
+.card .card-text {
+  font-size: 1.25rem; /* Increase font size */
+  margin-bottom: 10px;
+}
+
+.card .card-text strong {
+  font-weight: bold;
+}
+
+.text-success {
+  color: #28a745 !important;
+}
+
+.text-danger {
+  color: #dc3545 !important;
+}
+
+footer {
+  background-color: #607d8b;
+  color: white;
+  padding: 20px 0;
+}
+
+footer .footer-cta {
+  margin: 10px;
+}
+
+footer .footer-cta:hover {
+  background-color: #ffffff;
+  color: #607d8b;
+}
+
+footer .p-3 {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.container {
+  max-width: 800px;
+  margin: auto;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.card {
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #ffffff;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+  border-radius: 10px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.card-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+}
+
+.card-text {
+  font-size: 16px;
+  color: #555;
+}
+
+.text-success {
+  font-weight: bold;
+  color: #28a745 !important;
+}
+
+.text-danger {
+  font-weight: bold;
+  color: #dc3545 !important;
+}
+
+.text-center {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+
+
+

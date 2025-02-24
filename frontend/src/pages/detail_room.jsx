@@ -49,13 +49,26 @@ const DetailRoom = () => {
 
   return (
     <div className="container mt-5">
+     <nav className="navbar">
+      <div className="logo">
+        <span className="text-black">List</span><span className="text-red">ROOM RENT</span>
+      </div>
+      <div className="nav-links">
+        <a href="/">HOME</a>
+        <a href="/room">ROOM</a>
+        <a href="#">EXPLORE</a>
+        <a href="#">REVIEW</a>
+        <a href="#">BLOG</a>
+        <a href="#">CONTACT</a>
+      </div>
+    </nav> 
       <h1 className="text-center mb-4">Chi tiết phòng</h1>
       {room ? (
         <div className="card shadow-lg p-4">
           {/* Hiển thị ảnh từ backend hoặc ảnh tải lên */}
           <div>
            
-            {imageUrl && <img src={imageUrl} alt="Uploaded" width="200px" />}
+            {imageUrl && <img src={imageUrl} alt="Uploaded" width="1000px" />}
           </div>
           <div className="card-body">
             <h5 className="card-title">Phòng #{room.RoomID}</h5>
@@ -88,17 +101,9 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`navbar fixed-top navbar-expand-lg navbar-light ${scrolled ? "bg-light shadow" : "bg-white"}`}>
-      <div className="container">
+    
         <div className="collapse navbar-collapse" id="navbarSupportedContent1">
-          <a className="navbar-brand mt-2 mt-sm-0" href="#">
-            <img 
-              src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.webp" 
-              height="20" 
-              alt="MDB Logo" 
-              loading="lazy" 
-            />
-          </a>
+      
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item active">
               <a className="nav-link" href="#">Home</a>
@@ -114,8 +119,8 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-      </div>
-    </nav>
+    
+
   );
 };
 
@@ -123,7 +128,7 @@ const App = () => {
   return (
     <div className="d-flex flex-column min-vh-100">
       <Navbar />
-      <div className="container mt-5 pt-5 flex-grow-1">
+      <div className="container pt-5 flex-grow-1">
         <DetailRoom />
       </div>
     </div>
