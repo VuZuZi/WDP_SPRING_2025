@@ -39,8 +39,12 @@ const login = async (req, res) => {
 }
 
 const verify = (req, res) => {
+    if (!req.user) {
+        return res.status(401).json({ success: false, error: "Unauthorized: User not found" });
+    }
+
     return res.status(200).json({ success: true, user: req.user });
-}
+};
 
 const register = async (req, res) => {
     try {
@@ -94,3 +98,4 @@ const register = async (req, res) => {
 };
 
 export { login, register, verify };
+

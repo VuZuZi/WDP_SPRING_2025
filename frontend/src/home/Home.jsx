@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
-import { useAuth } from "../context/AuthContext";
 import { Link } from 'react-router-dom';
+import { useAuth } from "../context/authContext";
 
 
 import b1 from "../../public/images/blog/b1.jpg";
@@ -17,7 +17,6 @@ import './linearicons.css';
 import './responsive.css';
 import './slick-theme.css';
 import './slick.css';
-import logowelcome from "./welcome-hero/banner.jpg";
 const DirectoryLandingPage = () => {
   const { user, logout } = useAuth();
   const [rooms, setRooms] = useState([]);
