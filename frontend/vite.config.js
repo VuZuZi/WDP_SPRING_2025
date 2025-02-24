@@ -5,7 +5,10 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [react(),
     tailwindcss(),
-  ],
+  ], 
+  build: {
+    sourcemap: false
+  },
   extend:{
     fontFamily:{
       "pacific":["Pacifico", "sans-serif"],
