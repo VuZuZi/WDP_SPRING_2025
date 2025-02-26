@@ -1,13 +1,14 @@
 import express from 'express';
 import { createRoom, deleteRoom, getAllRooms, getRoomById, updateRoom } from '../controllers/roomController.js';
-import upload from '../middleware/upload.js';
-
+import { uploadImage } from '../middleware/upload.js';
+import verifyUser from "../middleware/authMiddleware.js";
+import hostMiddleware from '../middleware/hostMiddleware.js';
 const router = express.Router();
 
-router.post('/create', upload.single('image'), createRoom);
-router.get('/list', upload.single('image') ,getAllRooms);
+router.post('/create', verifyUser, hostMiddleware, uploadImage, createRoom);
+router.get('/list', getAllRooms);
 router.get('/detail/:id', getRoomById);
-router.put('/update/:id', updateRoom);
-router.delete('/delete/:id', deleteRoom);
+router.put('/update/:id', verifyUser, hostMiddleware, uploadImage, updateRoom);
+router.delete('/delete/:id', verifyUser, hostMiddleware, deleteRoom);
 
 export default router;

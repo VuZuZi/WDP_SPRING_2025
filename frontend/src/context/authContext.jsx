@@ -1,80 +1,110 @@
 import axios from "axios";
 import React, { createContext, useContext, useEffect, useState } from "react";
-import PropTypes from "prop-types"; // Thêm import PropTypes
+import PropTypes from "prop-types";
 
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null); // Error state for handling failures
-useEffect(() => {
-    const fetchUser = async () => {
-      const token = localStorage.getItem("token");
-      if (token) {
-        try {
-          const res = await axios.get("http://localhost:4000/api/users/profile", {
-            headers: { Authorization: `Bearer ${token}` },
-          });
-          setUser(res.data);
-        } catch (error) {
-          console.error("Error fetching user", error);
-        }
-      }
-    };
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    fetchUser();
+  // useEffect(() => {
+  //   const verifyUser = async () => {
+  //     setLoading(true);
+  //     const token = localStorage.getItem("token");
+
+  //     console.log("🔹 Token từ localStorage:", token);
+
+  //     if (!token) {
+  //       setUser(null);
+  //       setLoading(false);
+  //       return;
+  //     }
+
+  //     try {
+  //       // Gửi token lên server để xác minh
+  //       const verifyResponse = await axios.post(
+  //         "http://localhost:4000/api/auth/verify",
+  //         {}, // Body rỗng
+  //         {
+  //           headers: { Authorization: `Bearer ${token}` },
+  //         }
+  //       );
+
+  //       console.log("✅ Phản hồi xác minh:", verifyResponse.data);
+
+  //       if (verifyResponse.data.success && verifyResponse.data.user) {
+  //         // Nếu token hợp lệ, lấy hồ sơ người dùng đầy đủ
+  //         try {
+  //           const profileResponse = await axios.get(
+  //             "http://localhost:4000/api/user/profile",
+  //             {
+  //               headers: { Authorization: `Bearer ${token}` },
+  //             }
+  //           );
+
+  //           console.log("✅ Phản hồi hồ sơ:", profileResponse.data);
+  //           setUser(profileResponse.data); // Lưu hồ sơ đầy đủ vào state
+  //         } catch (profileError) {
+  //           console.error("⚠️ Lỗi khi lấy hồ sơ người dùng:", profileError);
+  //           setUser(verifyResponse.data.user); // Sử dụng dữ liệu từ verify làm dự phòng
+  //         }
+  //       } else {
+  //         console.log("⚠️ Token không hợp lệ, nhưng không xóa ngay.");
+  //       }
+  //     } catch (error) {
+  //       console.error("❌ Lỗi khi xác minh token:", error);
+
+  //       // Kiểm tra nếu lỗi là 401 (Unauthorized) thì mới xóa token
+  //       if (error.response && error.response.status === 401) {
+  //         console.log("❌ Token hết hạn! Xóa token khỏi localStorage.");
+  //         localStorage.removeItem("token");
+  //         setUser(null);
+  //       }
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   verifyUser();
+  // }, []);
+
+  useEffect(() => {
+    setLoading(true);
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      setUser({ token }); // Giữ trạng thái user đơn giản, có thể mở rộng sau
+    } else {
+      setUser(null);
+    }
+    setLoading(false);
   }, []);
-    useEffect(() => {
-        const verifyUser = async () => {
-            try {
-                const token = localStorage.getItem("token");
-                if (token) {
-                    const response = await axios.get("http://localhost:4000/api/auth/verify", {
-                        headers: {
-                            Authorization: `Bearer ${token}`,
-                        },
-                    });
 
-                    if (response.data.success && response.data.user) {
-                        setUser(response.data.user); // Lưu thông tin người dùng vào state
-                    } else {
-                        setUser(null); // Clear user data if the response is invalid
-                    }
-                } else {
-                    setUser(null); // Clear user data if no token is found
-                }
-            } catch (error) {
-                console.error("Error verifying user:", error);
-                setUser(null); // Clear user data on error
-                setError("Failed to verify user. Please try again.");
-            } finally {
-                setLoading(false); // Set loading to false when finished
-            }
-        };
+  const login = (userData, token) => {
+    console.log("🔹 Đang lưu token:", token);
+    localStorage.setItem("token", token);
+    localStorage.setItem("userData", userData.name);
+    setUser({ token });
+  };
 
-        verifyUser();
-    }, []);
+  const logout = () => {
+    console.log("🔹 Đăng xuất, xóa token khỏi localStorage.");
+    setUser(null);
+    localStorage.removeItem("token");
+    localStorage.removeItem("userData");
+  };
 
-    const login = (user, token) => {
-        setUser(user);
-        localStorage.setItem("token", token); // Save token in localStorage
-    };
-
-    const logout = () => {
-        setUser(null);
-        localStorage.removeItem("token"); // Remove token from localStorage
-    };
-
-    return (
-        <AuthContext.Provider value={{ user, login, logout, loading, error }}>
-            {!loading ? children : <div>Loading...</div>} {/* Only render children when not loading */}
-        </AuthContext.Provider>
-    );
+  return (
+    <AuthContext.Provider value={{ user, login, logout, loading, error }}>
+      {!loading ? children : <div>Đang tải...</div>}
+    </AuthContext.Provider>
+  );
 };
 
 AuthProvider.propTypes = {
-    children: PropTypes.node.isRequired, // Validate the children prop type
+  children: PropTypes.node.isRequired,
 };
 
 export const useAuth = () => useContext(AuthContext);

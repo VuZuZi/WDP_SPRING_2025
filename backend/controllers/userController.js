@@ -1,7 +1,6 @@
 import bcrypt from "bcrypt";
 import User from "../models/User.js";
-import multer from "multer";
-import path from "path";
+
 
 // Lấy thông tin hồ sơ người dùng
 const getProfile = async (req, res) => {
@@ -15,13 +14,12 @@ const getProfile = async (req, res) => {
     }
 };
 
-
 // Cập nhật thông tin hồ sơ
 const updateUserProfile = async (req, res) => {
     try {
         // Lấy thông tin người dùng từ request (req.user sẽ được gán bởi middleware verifyUser)
         const user = req.user;
-        
+
         // Cập nhật các thông tin cần thiết
         user.name = req.body.name || user.name;
         user.email = req.body.email || user.email;
@@ -65,10 +63,10 @@ const changePassword = async (req, res) => {
 // Upload ảnh đại diện
 const updateAvatar = async (req, res) => {
     try {
-        const { profileImage } = req.body;
-
-        if (!profileImage) return res.status(400).json({ success: false, error: "No image provided" });
-
+        if (!req.file) {
+            return res.status(400).json({ success: false, error: "No image uploaded!" });
+        }
+        const profileImage = req.file.path
         const user = await User.findByIdAndUpdate(
             req.user._id,
             { profileImage },
@@ -81,18 +79,18 @@ const updateAvatar = async (req, res) => {
     }
 };
 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'uploads/'); // Thư mục lưu trữ ảnh
-    },
-    filename: (req, file, cb) => {
-        cb(null, Date.now() + path.extname(file.originalname)); 
-    },
-});
+// const storage = multer.diskStorage({
+//     destination: (req, file, cb) => {
+//         cb(null, 'uploads/'); // Thư mục lưu trữ ảnh
+//     },
+//     filename: (req, file, cb) => {
+//         cb(null, Date.now() + path.extname(file.originalname));
+//     },
+// });
 
-const upload = multer({ storage });
+// const upload = multer({ storage });
 
 
 
-export { getProfile, updateUserProfile , changePassword, updateAvatar };
+export { getProfile, updateUserProfile, changePassword, updateAvatar };
 

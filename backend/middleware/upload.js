@@ -1,21 +1,22 @@
-// middleware/upload.js
 import multer from 'multer';
-import path from 'path';
+import { upload } from '../db/cloudinary.js';
 
-// Specify the storage options for multer
-const storage = multer.diskStorage({
-  // Define where the uploaded file should be saved
-  destination: (req, file, cb) => {
-    cb(null, 'img/'); // The folder where files will be stored
-  },
-  // Define the file name format
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    cb(null, uniqueSuffix + path.extname(file.originalname)); // Unique file name with original extension
-  }
-});
+// hàm upload file
+const uploadImage = async (req, res, next) => {
+    upload.single('img')(req, res, async (err) => {
+        if (err instanceof multer.MulterError) {
+            return res.status(400).json({
+                status: "fail",
+                message: "Error uploading avatar: " + err.message,
+            });
+        } else if (err) {
+            return res.status(400).json({
+                status: "fail",
+                message: err.message,
+            });
+        }
+        next();
+    });
+};
 
-// Create the multer upload instance with storage options
-const upload = multer({ storage: storage });
-
-export default upload;
+export { uploadImage };

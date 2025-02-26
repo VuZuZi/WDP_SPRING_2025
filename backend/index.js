@@ -25,7 +25,7 @@ import roomRouter from './routes/room.js';
 dotenv.config(); // Load biến môi trường
 
 const app = express();
-const PORT = process.env.PORT ; // Lấy PORT từ .env, nếu không có thì mặc định là 5000
+const PORT = process.env.PORT; // Lấy PORT từ .env, nếu không có thì mặc định là 5000
 
 // Kết nối MongoDB
 connectToDatabase();

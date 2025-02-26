@@ -1,0 +1,565 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    background-color: #f5f7fa;
+    color: #333;
+}
+
+/* Navbar styles improved */
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+.explore-content1 {
+   margin-top: 90px;
+
+}
+
+/* ======= Navbar ======= */
+.navbar {
+    background: w;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    background: #34495e;
+    border-radius: 5px;
+}
+
+
+/* Container styles */
+.container {
+    flex: 1;
+    padding: 30px 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Card styles enhanced */
+.card {
+    margin-top: 30px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+    max-height: 300px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.card .card-body {
+    padding: 25px;
+}
+
+.card .card-title {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+    color: #212121;
+}
+
+.card .card-text {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: #424242;
+}
+
+.card .card-text strong {
+    font-weight: 700;
+    color: #212121;
+}
+
+/* Status colors */
+.text-success {
+    color: #0f9d58 !important;
+}
+
+.text-danger {
+    color: #ea4335 !important;
+}
+
+/* Button styles */
+.btn {
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #1a73e8;
+    border-color: #1a73e8;
+}
+
+.btn-primary:hover {
+    background-color: #0d62d1;
+    border-color: #0d62d1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(26, 115, 232, 0.3);
+}
+
+/* Footer enhancements */
+footer {
+    background-color: #263238;
+    color: white;
+    padding: 40px 0 0;
+    margin-top: 50px;
+}
+
+footer a {
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+footer .footer-cta {
+    margin: 10px;
+    padding: 12px 25px;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 2px solid white;
+}
+
+footer .footer-cta:hover {
+    background-color: #ffffff;
+    color: #263238;
+    transform: translateY(-2px);
+}
+
+footer .p-3 {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 15px 0;
+    margin-top: 30px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card .card-title {
+        font-size: 1.75rem;
+    }
+
+    .card .card-text {
+        font-size: 1.1rem;
+    }
+
+    .navbar {
+        padding: 10px 0;
+    }
+}
+
+/* detail_room.css */
+.explore-content {
+    padding: 40px 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -15px;
+}
+
+.col-md-4,
+.col-sm-6 {
+    padding: 15px;
+    flex: 0 0 calc(33.333% - 30px);
+    max-width: calc(33.333% - 30px);
+}
+
+@media (max-width: 992px) {
+
+    .col-md-4,
+    .col-sm-6 {
+        flex: 0 0 calc(50% - 30px);
+        max-width: calc(50% - 30px);
+    }
+}
+
+@media (max-width: 576px) {
+
+    .col-md-4,
+    .col-sm-6 {
+        flex: 0 0 calc(100% - 30px);
+        max-width: calc(100% - 30px);
+    }
+}
+
+.single-explore-item {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.single-explore-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.single-explore-img {
+    position: relative;
+    overflow: hidden;
+    height: 220px;
+}
+
+
+.single-explore-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.single-explore-item:hover .single-explore-img img {
+    transform: scale(1.05);
+}
+
+.single-explore-txt {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.single-explore-txt h2 {
+    margin: 0 0 15px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.single-explore-txt h2 a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.single-explore-txt h2 a:hover {
+    color: #0066cc;
+}
+
+.explore-rating-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.explore-rating {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    background: rgba(0, 102, 204, 0.1);
+    color: #0066cc;
+}
+
+.explore-price-box {
+    font-size: 0.875rem;
+    color: #666;
+}
+
+.explore-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #333;
+    margin-left: 5px;
+}
+
+/* Các theme màu khác nhau */
+.bg-theme-1 {
+    border-top: 3px solid #4CAF50;
+    background: linear-gradient(to bottom, rgba(76, 175, 80, 0.05), white);
+}
+
+.bg-theme-2 {
+    border-top: 3px solid #2196F3;
+    background: linear-gradient(to bottom, rgba(33, 150, 243, 0.05), white);
+}
+
+.bg-theme-3 {
+    border-top: 3px solid #FF9800;
+    background: linear-gradient(to bottom, rgba(255, 152, 0, 0.05), white);
+}
+
+.bg-theme-4 {
+    border-top: 3px solid #E91E63;
+    background: linear-gradient(to bottom, rgba(233, 30, 99, 0.05), white);
+}
+
+.bg-theme-5 {
+    border-top: 3px solid #9C27B0;
+    background: linear-gradient(to bottom, rgba(156, 39, 176, 0.05), white);
+}
+
+/* Pagination styles */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    gap: 15px;
+}
+
+.pagination button {
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    color: #333;
+}
+
+.pagination button:hover:not(:disabled) {
+    background-color: #0066cc;
+    color: white;
+    border-color: #0066cc;
+}
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Loading and Error States */
+p {
+    text-align: center;
+    padding: 20px;
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Bổ sung vào detail_room.css */
+
+/* Section Title */
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+    font-size: 5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title h2:after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 3px;
+    background: #0066cc;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.section-title p {
+    font-size: 3rem;
+    color: #666;
+    max-width: 700px;
+    margin: 20px auto 0;
+}
+
+/* Room Features */
+.room-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.room-features span {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.room-features span i {
+    margin-right: 5px;
+    font-size: 1rem;
+    color: #0066cc;
+}
+
+/* Status Indicator */
+.explore-status {
+    display: flex;
+    align-items: center;
+}
+
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.status-indicator.available {
+    background-color: #4CAF50;
+}
+
+.status-indicator.booked {
+    background-color: #F44336;
+}
+
+/* Price formatting */
+.explore-price-period {
+    font-size: 0.75rem;
+    color: #666;
+    font-weight: normal;
+}
+
+/* Overlay for image hover */
+.explore-item-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.single-explore-img:hover .explore-item-overlay {
+    opacity: 1;
+}
+
+.btn-view-details {
+    padding: 8px 16px;
+    background-color: #0066cc;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.btn-view-details:hover {
+    background-color: #005bb5;
+    transform: scale(1.05);
+}
+
+/* Improved pagination */
+.pagination button {
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination button.active {
+    background-color: #0066cc;
+    color: white;
+    border-color: #0066cc;
+}
+
+/* Loading spinner */
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(0, 102, 204, 0.1);
+    border-left-color: #0066cc;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Error styles */
+.error-container {
+    text-align: center;
+    padding: 40px;
+    background-color: #fff5f5;
+    border-radius: 8px;
+    margin: 20px;
+}
+
+.error-message {
+    color: #e53e3e;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.error-container button {
+    padding: 10px 20px;
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.error-container button:hover {
+    background-color: #005bb5;
+}
