@@ -259,9 +259,8 @@ const DirectoryLandingPage = () => {
                       <div className="single-explore-img">
                         <img
                           src={
-                            room.Image
-                              ? `../src/img/${room.Image}.jpg`
-                              : "../src/img/p1.jpg"
+                            room.Image ||
+                            "https://th.bing.com/th/id/R.f72401e20b6a7cabad922be0a9d1d616?rik=hVDbTETsy4VtbQ&pid=ImgRaw&r=0"
                           }
                           alt="explore image"
                         />
