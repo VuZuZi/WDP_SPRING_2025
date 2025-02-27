@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./detail_room.css";
+import Navbar from "../component/navbar";
+import { useAuth } from "../context/AuthContext";
 
 const RoomList = () => {
   const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const { user } = useAuth();
+
   const roomsPerPage = 6;
 
   useEffect(() => {
@@ -86,7 +90,8 @@ const RoomList = () => {
 
   return (
     <div className="explore-content1">
-      <nav className="navbar">
+      <Navbar role={user?.role} />
+      {/* <nav className="navbar">
         <div className="logo">
           <span className="text-black">List</span>
           <span className="text-red">ROOM RENT</span>
@@ -99,7 +104,7 @@ const RoomList = () => {
           <a href="#">BLOG</a>
           <a href="#">CONTACT</a>
         </div>
-      </nav>
+      </nav> */}
       <div className="section-title">
         <h2>Danh Sách Phòng</h2>
         <p>

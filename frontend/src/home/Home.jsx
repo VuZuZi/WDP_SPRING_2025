@@ -17,6 +17,9 @@ import "./responsive.css";
 import "./slick-theme.css";
 import "./slick.css";
 import logowelcome from "./welcome-hero/banner.jpg";
+
+import Header from "../component/header";
+import Navbar from "../component/navbar";
 const DirectoryLandingPage = () => {
   const { user, logout } = useAuth();
   const [name, setName] = useState(null);
@@ -63,88 +66,11 @@ const DirectoryLandingPage = () => {
 
   if (loading) return <p>Đang tải danh sách phòng...</p>;
   if (error) return <p>Lỗi: {error}</p>;
-  console.log(user);
 
   return (
     <div>
-      <header id="header-top" className="header-top">
-        <ul>
-          <li>
-            <div className="header-top-left">
-              <ul>
-                <li className="select-opt">
-                  <select name="language" id="language">
-                    <option value="default">EN</option>
-                    <option value="Bangla">BN</option>
-                    <option value="Arabic">AB</option>
-                  </select>
-                </li>
-
-                <li className="select-opt">
-                  <select name="currency" id="currency">
-                    <option value="usd">USD</option>
-                    <option value="euro">Euro</option>
-                    <option value="bdt">BDT</option>
-                  </select>
-                </li>
-                <li className="select-opt">
-                  <a href="#">
-                    <span className="lnr lnr-magnifier"></span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li className="head-responsive-right pull-right">
-            <div className="header-top-right">
-              <ul>
-                <li className="header-top-contact">+84 0908 290 345</li>
-
-                {user ? (
-                  <>
-                    <li className="header-top-contact">Hello {name}</li>
-                    <li className="header-top-contact">
-                      <Link to="/profile">My Profile</Link>
-                    </li>
-                    <li className="header-top-contact">
-                      <button onClick={logout} className="logout-btn">
-                        Logout
-                      </button>
-                    </li>
-                  </>
-                ) : (
-                  <>
-                    <li className="header-top-contact">
-                      <Link to="/login">Sign In</Link>
-                    </li>
-                    <li className="header-top-contact">
-                      <Link to="/register">Register</Link>
-                    </li>
-                  </>
-                )}
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </header>
-      <nav className="navbar">
-        <div className="logo">
-          <span className="text-black">List</span>
-          <span className="text-red">ROOM RENT</span>
-        </div>
-        <div className="nav-links">
-          <a href="/">HOME</a>
-          <a href="/room">ROOM</a>
-          <a href="#">EXPLORE</a>
-          <a href="#">REVIEW</a>
-          <a href="#">BLOG</a>
-          <a href="#">CONTACT</a>
-        </div>
-      </nav>
-
-      {/* <section id="home" className="welcome-hero py-16 bg-gray-100"> */}
-
-      {/* </section> */}
+      <Header user={user} name={user?.name} logout={logout} />
+      <Navbar role={user?.role} />
       <section id="home" className="welcome-hero py-16 bg-gray-100">
         <div className="container mx-auto text-center">
           <h1 className="text-7xl font-bold leading-tight">

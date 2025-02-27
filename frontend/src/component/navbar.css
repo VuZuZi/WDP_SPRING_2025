@@ -1,0 +1,121 @@
+/* navbar.css */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2px;
+    padding: 20px 50px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.text-black {
+    color: #333333;
+}
+
+.text-red {
+    color: #e53e3e;
+    margin-left: 5px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #4a5568;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #e53e3e;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #e53e3e;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Đặc biệt cho nút Login và Logout */
+.nav-links a[href="/login"],
+.nav-links a[href="/logout"] {
+    background-color: #e53e3e;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-links a[href="/login"]:hover,
+.nav-links a[href="/logout"]:hover {
+    background-color: #c53030;
+    transform: translateY(-2px);
+}
+
+.nav-links a[href="/login"]::after,
+.nav-links a[href="/logout"]::after {
+    display: none;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 15px 30px;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .logo {
+        margin-bottom: 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+}

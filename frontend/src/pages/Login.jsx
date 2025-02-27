@@ -20,13 +20,13 @@ const Login = () => {
         "http://localhost:4000/api/auth/login",
         { email, password }
       );
-      console.log("Phản hồi đăng nhập:", response.data);
+      // console.log("Phản hồi đăng nhập:", response.data);
 
       if (response.data.success) {
         // Truyền cả user và token vào hàm login
-
+        // console.log(response.data.user, response.data.token);
         login(response.data.user, response.data.token);
-        console.log(response.data.user, response.data.token);
+        // console.log(response.data.user, response.data.token);
 
         if (response.data.user.role === "admin") {
           navigate("/admin-dashboard");

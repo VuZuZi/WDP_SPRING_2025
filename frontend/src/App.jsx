@@ -1,4 +1,6 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { useAuth } from "./context/authContext"; // Lấy role từ authContext
+
 import Home from "./home/Home";
 import AdminDashboard from "./pages/AdminDashBoard";
 import EmployeeDashboard from "./pages/EmployeeDashboard";
@@ -11,26 +13,55 @@ import Room from "./pages/room";
 import HostLayout from "./pages/HostLayout";
 import HostPage from "./pages/HostPage";
 
+// Component bảo vệ route
+const ProtectedRoute = ({ element, allowedRoles }) => {
+  const { user } = useAuth(); // Lấy user từ authContext
+  if (!user) return <Navigate to="/login" />;
+  if (!allowedRoles.includes(user.role)) return <Navigate to="/" />;
+  return element;
+};
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route path="/" element={<Nagivate to="/admin-dashboard"/>}></Route> */}
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/room/:id" element={<DetailRoom />}></Route>
-        <Route path="/profile" element={<Profile />}></Route>
-        <Route path="/room" element={<Room />}></Route>
-        <Route path="/register" element={<Register />}></Route>
-        <Route path="/admin-dashboard" element={<AdminDashboard />}></Route>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/room/:id" element={<DetailRoom />} />
+        <Route path="/room" element={<Room />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/change-password" element={<ChangePassword />} />
+
+        {/* Chỉ Admin mới vào được Dashboard */}
+        <Route
+          path="/admin-dashboard"
+          element={
+            <ProtectedRoute
+              element={<AdminDashboard />}
+              allowedRoles={["admin"]}
+            />
+          }
+        />
+
+        {/* Chỉ Employee mới vào được Employee Dashboard */}
         <Route
           path="/employee-dashboard"
-          element={<EmployeeDashboard />}
-        ></Route>
-        <Route path="/change-password" element={<ChangePassword />}></Route>
+          element={
+            <ProtectedRoute
+              element={<EmployeeDashboard />}
+              allowedRoles={["employee"]}
+            />
+          }
+        />
 
-        {/* Host layout với nested routes */}
-        <Route path="/host" element={<HostLayout />}>
+        {/* Host Pages */}
+        <Route
+          path="/my-rooms"
+          element={
+            <ProtectedRoute element={<HostLayout />} allowedRoles={["host"]} />
+          }
+        >
           <Route index element={<HostPage />} />
           <Route path="room" element={<HostPage />} />
         </Route>
