@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./detail_room.css";
 import Navbar from "../component/navbar";
 import { useAuth } from "../context/AuthContext";
+import Header from "../component/header";
 
 const RoomList = () => {
   const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
 
   const roomsPerPage = 6;
 
@@ -90,6 +91,7 @@ const RoomList = () => {
 
   return (
     <div className="explore-content1">
+      <Header user={user} name={user?.name} logout={logout} />
       <Navbar role={user?.role} />
       {/* <nav className="navbar">
         <div className="logo">
